@@ -1,0 +1,19 @@
+{
+    "name": "GameFrameX.Asset.Runtime",
+    "references": [
+        "BetterStreamingAssets",
+        "GameFrameX.Runtime",
+        "YooAsset.Runtime",
+        "UniTask.Runtime"
+    ],
+    "rootNamespace": "GameFrameX.Asset.Runtime",
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
