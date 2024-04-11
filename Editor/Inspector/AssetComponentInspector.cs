@@ -12,13 +12,11 @@ using UnityEditor;
 namespace GameFrameX.Asset.Editor
 {
     [CustomEditor(typeof(AssetComponent))]
-    internal sealed class AssetComponentInspector : GameFrameworkInspector
+    internal sealed class AssetComponentInspector : ComponentTypeComponentInspector
     {
-        public override void OnInspectorGUI()
+        protected override void RefreshTypeNames()
         {
-            base.OnInspectorGUI();
-
-            Repaint();
+            RefreshComponentTypeNames(typeof(IAssetManager));
         }
     }
 }
