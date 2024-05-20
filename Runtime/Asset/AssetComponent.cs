@@ -16,13 +16,30 @@ namespace GameFrameX.Asset.Runtime
     [AddComponentMenu("Game Framework/Asset")]
     public sealed class AssetComponent : GameFrameworkComponent
     {
-        public EPlayMode GamePlayMode;
+        [Tooltip("当目标平台为Web平台时，将会强制设置为" + nameof(EPlayMode.WebPlayMode))] [SerializeField]
+        private EPlayMode m_GamePlayMode;
+
+        /// <summary>
+        /// 资源的运行模式
+        /// </summary>
+        public EPlayMode GamePlayMode
+        {
+            get { return m_GamePlayMode; }
+            set { m_GamePlayMode = value; }
+        }
+
+        [Tooltip("通过初始化代码调用")] [SerializeField]
+        private string m_hostServer;
+
+        [Tooltip("通过初始化代码调用")] [SerializeField]
+        private string m_fallbackHostServer;
+
         private ResourcePackage buildinPackage;
         public const string BuildInPackageName = "DefaultPackage";
 
 
         private InitializationOperation initializationOperation;
-        private string _hostServer;
+
         public string StaticVersion { get; private set; }
         private IAssetManager _assetManager;
 
@@ -50,11 +67,12 @@ namespace GameFrameX.Asset.Runtime
             StaticVersion = version;
         }
 
-        public async void Initialize(string host, string fallbackHost)
+        public async void Initialize(string host, string fallbackHostServer)
         {
-            _hostServer = host;
+            m_hostServer = host;
+            m_fallbackHostServer = fallbackHostServer;
             _assetManager.SetHostServerURL(host);
-            _assetManager.SetFallbackHostServerURL(fallbackHost);
+            _assetManager.SetFallbackHostServerURL(fallbackHostServer);
             _assetManager.Initialize();
             await _assetManager.InitPackage().ToUniTask();
         }
