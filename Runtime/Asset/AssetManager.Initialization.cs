@@ -8,29 +8,29 @@ namespace GameFrameX.Asset.Runtime
         /// 根据运行模式创建初始化操作数据
         /// </summary>
         /// <returns></returns>
-        private InitializationOperation CreateInitializationOperationHandler()
+        private InitializationOperation CreateInitializationOperationHandler(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             switch (PlayMode)
             {
                 case EPlayMode.EditorSimulateMode:
                 {
                     // 编辑器下的模拟模式
-                    return InitializeYooAssetEditorSimulateMode();
+                    return InitializeYooAssetEditorSimulateMode(resourcePackage);
                 }
                 case EPlayMode.OfflinePlayMode:
                 {
                     // 单机运行模式
-                    return InitializeYooAssetOfflinePlayMode();
+                    return InitializeYooAssetOfflinePlayMode(resourcePackage);
                 }
                 case EPlayMode.HostPlayMode:
                 {
                     // 联机运行模式
-                    return InitializeYooAssetHostPlayMode();
+                    return InitializeYooAssetHostPlayMode(resourcePackage, hostServerURL, fallbackHostServerURL);
                 }
                 case EPlayMode.WebPlayMode:
                 {
                     // WebGL运行模式
-                    return InitializeYooAssetWebPlayMode();
+                    return InitializeYooAssetWebPlayMode(resourcePackage, hostServerURL, fallbackHostServerURL);
                 }
                 default:
                 {
@@ -39,36 +39,36 @@ namespace GameFrameX.Asset.Runtime
             }
         }
 
-        private InitializationOperation InitializeYooAssetEditorSimulateMode()
+        private InitializationOperation InitializeYooAssetEditorSimulateMode(ResourcePackage resourcePackage)
         {
             var initParameters = new EditorSimulateModeParameters();
             initParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), DefaultPackageName);
 
-            return _buildinPackage.InitializeAsync(initParameters);
+            return resourcePackage.InitializeAsync(initParameters);
         }
 
-        private InitializationOperation InitializeYooAssetOfflinePlayMode()
+        private InitializationOperation InitializeYooAssetOfflinePlayMode(ResourcePackage resourcePackage)
         {
             var initParameters = new OfflinePlayModeParameters();
-            return _buildinPackage.InitializeAsync(initParameters);
+            return resourcePackage.InitializeAsync(initParameters);
         }
 
-        private InitializationOperation InitializeYooAssetWebPlayMode()
+        private InitializationOperation InitializeYooAssetWebPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             var initParameters = new WebPlayModeParameters();
             initParameters.BuildinQueryServices = new QueryStreamingAssetsFileServices();
-            initParameters.RemoteServices = new RemoteServices(HostServerURL, FallbackHostServerURL);
-            return _buildinPackage.InitializeAsync(initParameters);
+            initParameters.RemoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
+            return resourcePackage.InitializeAsync(initParameters);
         }
 
-        private InitializationOperation InitializeYooAssetHostPlayMode()
+        private InitializationOperation InitializeYooAssetHostPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             var initParameters = new HostPlayModeParameters();
             initParameters.BuildinQueryServices = new QueryStreamingAssetsFileServices();
-            initParameters.RemoteServices = new RemoteServices(HostServerURL, FallbackHostServerURL);
+            initParameters.RemoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
             // initParameters.DeliveryQueryServices = new WebDeliveryQueryServices();
             // initParameters.DeliveryLoadServices = new WebDeliveryLoadServices();
-            return _buildinPackage.InitializeAsync(initParameters);
+            return resourcePackage.InitializeAsync(initParameters);
         }
     }
 }

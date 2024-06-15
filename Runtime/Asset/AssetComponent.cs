@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using GameFrameX.Asset;
 using GameFrameX.Runtime;
@@ -27,20 +28,13 @@ namespace GameFrameX.Asset.Runtime
             get { return m_GamePlayMode; }
             set { m_GamePlayMode = value; }
         }
+#if UNITY_EDITOR
+        [SerializeField] private List<AssetResourcePackageInfo> m_assetResourcePackages = new List<AssetResourcePackageInfo>();
+#endif
 
-        [Tooltip("通过初始化代码调用")] [SerializeField]
-        private string m_hostServer;
-
-        [Tooltip("通过初始化代码调用")] [SerializeField]
-        private string m_fallbackHostServer;
-
-        private ResourcePackage buildinPackage;
         public const string BuildInPackageName = "DefaultPackage";
+        private InitializationOperation _initializationOperation;
 
-
-        private InitializationOperation initializationOperation;
-
-        public string StaticVersion { get; private set; }
         private IAssetManager _assetManager;
 
         protected override void Awake()
@@ -48,7 +42,6 @@ namespace GameFrameX.Asset.Runtime
 #if UNITY_WEBGL && !UNITY_EDITOR
             GamePlayMode = EPlayMode.WebPlayMode;
 #endif
-
             ImplementationComponentType = Type.GetType(componentType);
             InterfaceComponentType = typeof(IAssetManager);
             base.Awake();
@@ -62,21 +55,34 @@ namespace GameFrameX.Asset.Runtime
             _assetManager.SetPlayMode(GamePlayMode);
         }
 
-        public void UpdateStaticVersion(string version)
+        private void Start()
         {
-            StaticVersion = version;
-        }
-
-        public async void Initialize(string host, string fallbackHostServer)
-        {
-            m_hostServer = host;
-            m_fallbackHostServer = fallbackHostServer;
-            _assetManager.SetHostServerURL(host);
-            _assetManager.SetFallbackHostServerURL(fallbackHostServer);
             _assetManager.Initialize();
-            await _assetManager.InitPackage().ToUniTask();
         }
 
+        /// <summary>
+        /// 初始化资源包
+        /// </summary>
+        /// <param name="packageName">包名称</param>
+        /// <param name="host">主下载地址</param>
+        /// <param name="fallbackHostServer">备用下载地址</param>
+        /// <param name="isDefaultPackage">是否是默认包</param>
+        public async void InitPackage(string packageName, string host, string fallbackHostServer, bool isDefaultPackage = false)
+        {
+#if UNITY_EDITOR
+            var assetResourcePackageInfo = new AssetResourcePackageInfo()
+            {
+                PackageName = packageName,
+                DownloadURL = host,
+                FallbackDownloadURL = fallbackHostServer
+            };
+            if (!m_assetResourcePackages.Exists(m => m.PackageName == packageName))
+            {
+                m_assetResourcePackages.Add(assetResourcePackageInfo);
+            }
+#endif
+            await _assetManager.InitPackage(packageName, host, fallbackHostServer, isDefaultPackage).ToUniTask();
+        }
 
         #region 异步加载子资源对象
 
@@ -406,4 +412,13 @@ namespace GameFrameX.Asset.Runtime
             _assetManager.OnDestroy();
         }
     }
+#if UNITY_EDITOR
+    [Serializable]
+    public sealed class AssetResourcePackageInfo
+    {
+        [SerializeField] public string PackageName;
+        [SerializeField] public string DownloadURL;
+        [SerializeField] public string FallbackDownloadURL;
+    }
+#endif
 }

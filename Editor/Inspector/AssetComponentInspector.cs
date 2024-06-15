@@ -18,10 +18,8 @@ namespace GameFrameX.Asset.Editor
         private SerializedProperty m_GamePlayMode;
 
         private GUIContent m_GamePlayModeGUIContent = new GUIContent("资源运行模式");
-        private GUIContent m_hostServerGUIContent = new GUIContent("主下载资源地址");
-        private GUIContent m_fallbackHostServerGUIContent = new GUIContent("备用下载资源地址");
-        private SerializedProperty m_hostServer;
-        private SerializedProperty m_fallbackHostServer;
+        private GUIContent m_AssetResourcePackagesGUIContent = new GUIContent("包列表");
+        private SerializedProperty m_AssetResourcePackages;
 
         public override void OnInspectorGUI()
         {
@@ -33,8 +31,7 @@ namespace GameFrameX.Asset.Editor
             {
                 EditorGUILayout.PropertyField(m_GamePlayMode, m_GamePlayModeGUIContent);
                 GUI.enabled = false;
-                EditorGUILayout.PropertyField(m_hostServer, m_hostServerGUIContent);
-                EditorGUILayout.PropertyField(m_fallbackHostServer, m_fallbackHostServerGUIContent);
+                EditorGUILayout.PropertyField(m_AssetResourcePackages, m_AssetResourcePackagesGUIContent);
                 GUI.enabled = true;
             }
             EditorGUI.EndDisabledGroup();
@@ -52,8 +49,8 @@ namespace GameFrameX.Asset.Editor
         protected override void Enable()
         {
             m_GamePlayMode = serializedObject.FindProperty("m_GamePlayMode");
-            m_hostServer = serializedObject.FindProperty("m_hostServer");
-            m_fallbackHostServer = serializedObject.FindProperty("m_fallbackHostServer");
+            m_AssetResourcePackages = serializedObject.FindProperty("m_assetResourcePackages");
+            // m_fallbackHostServer = serializedObject.FindProperty("m_fallbackHostServer");
         }
     }
 }

@@ -13,10 +13,8 @@ namespace GameFrameX.Asset.Runtime
     /// </summary>
     public partial class AssetManager : GameFrameworkModule, IAssetManager
     {
-        private ResourcePackage _buildinPackage;
         public string DefaultPackageName { get; set; } = "DefaultPackage";
 
-        public string StaticVersion { get; private set; }
 
         public int DownloadingMaxNum { get; set; }
         public int FailedTryAgain { get; set; }
@@ -24,47 +22,6 @@ namespace GameFrameX.Asset.Runtime
 
         public EVerifyLevel VerifyLevel { get; set; }
         public long Milliseconds { get; set; }
-
-        /// <summary>
-        /// 更新静态版本
-        /// </summary>
-        /// <param name="version"></param>
-        public void UpdateStaticVersion(string version)
-        {
-            StaticVersion = version;
-        }
-
-
-        /// <summary>
-        /// 热更链接URL。
-        /// </summary>
-        public string HostServerURL { get; private set; }
-
-        /// <summary>
-        /// 备用热更链接URL。
-        /// </summary>
-        public string FallbackHostServerURL { get; private set; }
-
-        /// <summary>
-        /// 设置热更链接URL。
-        /// </summary>
-        /// <param name="hostServerURL">热更链接URL。</param>
-        public void SetHostServerURL(string hostServerURL)
-        {
-            GameFrameworkGuard.NotNull(hostServerURL, nameof(hostServerURL));
-            HostServerURL = hostServerURL;
-        }
-
-        /// <summary>
-        /// 设置备用热更链接URL
-        /// </summary>
-        /// <param name="fallbackHostServerURL"></param>
-        public void SetFallbackHostServerURL(string fallbackHostServerURL)
-        {
-            GameFrameworkGuard.NotNull(fallbackHostServerURL, nameof(fallbackHostServerURL));
-            FallbackHostServerURL = fallbackHostServerURL;
-        }
-
 
         /// <summary>
         /// 初始化
@@ -85,19 +42,30 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 初始化操作。
         /// </summary>
+        /// <param name="packageName">包名称</param>
+        /// <param name="hostServerURL">热更链接URL。</param>
+        /// <param name="fallbackHostServerURL">备用热更链接URL</param>
+        /// <param name="isDefaultPackage">是否是默认包</param>
         /// <returns></returns>
-        public InitializationOperation InitPackage()
+        public InitializationOperation InitPackage(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false)
         {
+            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            GameFrameworkGuard.NotNull(hostServerURL, nameof(hostServerURL));
+            GameFrameworkGuard.NotNull(fallbackHostServerURL, nameof(fallbackHostServerURL));
+
             // 创建默认的资源包
-            _buildinPackage = YooAssets.TryGetPackage(DefaultPackageName);
-            if (_buildinPackage == null)
+            var resourcePackage = YooAssets.TryGetPackage(packageName);
+            if (resourcePackage == null)
             {
-                _buildinPackage = YooAssets.CreatePackage(DefaultPackageName);
-                // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
-                YooAssets.SetDefaultPackage(_buildinPackage);
+                resourcePackage = YooAssets.CreatePackage(packageName);
+                if (isDefaultPackage)
+                {
+                    // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
+                    YooAssets.SetDefaultPackage(resourcePackage);
+                }
             }
 
-            return CreateInitializationOperationHandler();
+            return CreateInitializationOperationHandler(resourcePackage,hostServerURL,fallbackHostServerURL);
         }
 
         /// <summary>

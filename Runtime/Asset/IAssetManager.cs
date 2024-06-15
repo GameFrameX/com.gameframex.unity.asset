@@ -64,38 +64,10 @@ namespace GameFrameX.Asset.Runtime
         long Milliseconds { get; set; }
 
         /// <summary>
-        /// 更新静态版本
-        /// </summary>
-        /// <param name="version"></param>
-        void UpdateStaticVersion(string version);
-
-        /// <summary>
         /// 设置运行模式
         /// </summary>
         /// <param name="playMode">运行模式</param>
         void SetPlayMode(EPlayMode playMode);
-
-        /// <summary>
-        /// 热更链接URL。
-        /// </summary>
-        string HostServerURL { get; }
-
-        /// <summary>
-        /// 备用热更链接URL。
-        /// </summary>
-        string FallbackHostServerURL { get; }
-
-        /// <summary>
-        /// 设置热更链接URL。
-        /// </summary>
-        /// <param name="hostServerURL">热更链接URL。</param>
-        void SetHostServerURL(string hostServerURL);
-
-        /// <summary>
-        /// 设置备用热更链接URL
-        /// </summary>
-        /// <param name="fallbackHostServerURL"></param>
-        void SetFallbackHostServerURL(string fallbackHostServerURL);
 
         /// <summary>
         /// 初始化
@@ -106,9 +78,12 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 初始化操作。
         /// </summary>
+        /// <param name="packageName">包名称。</param>
+        /// <param name="hostServerURL">热更链接URL。</param>
+        /// <param name="fallbackHostServerURL">备用热更链接URL</param>
+        /// <param name="isDefaultPackage">是否是默认包</param>
         /// <returns></returns>
-        InitializationOperation InitPackage();
-
+        InitializationOperation InitPackage(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false);
 
         /// <summary>
         /// 卸载资源
