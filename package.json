@@ -1,5 +1,5 @@
 {
-  "name": "com.alianblank.gameframex.unity.asset",
+  "name": "com.gameframex.unity.asset",
   "displayName": "Game Frame X Asset",
   "category": "Game Framework X",
   "description": "Game Frame X Asset Component",
@@ -9,8 +9,8 @@
     "Game Framework X"
   ],
   "repository": {
-    "name": "com.alianblank.gameframex.unity.asset",
-    "url": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.asset.git",
+    "name": "com.gameframex.unity.asset",
+    "url": "https://github.com/AlianBlank/com.gameframex.unity.asset.git",
     "type": "git"
   },
   "author": {
