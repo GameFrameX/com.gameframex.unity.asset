@@ -39,6 +39,7 @@ namespace GameFrameX.Asset.Runtime
             Debug.Log("Asset Init Over");
         }
 
+
         /// <summary>
         /// 初始化操作。
         /// </summary>
@@ -47,8 +48,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="fallbackHostServerURL">备用热更链接URL</param>
         /// <param name="isDefaultPackage">是否是默认包</param>
         /// <returns></returns>
-        public InitializationOperation InitPackage(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false)
+        public UniTask<bool> InitPackageAsync(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false)
         {
+            var taskCompletionSource = new UniTaskCompletionSource<bool>();
             GameFrameworkGuard.NotNull(packageName, nameof(packageName));
             GameFrameworkGuard.NotNull(hostServerURL, nameof(hostServerURL));
             GameFrameworkGuard.NotNull(fallbackHostServerURL, nameof(fallbackHostServerURL));
@@ -65,7 +67,19 @@ namespace GameFrameX.Asset.Runtime
                 }
             }
 
-            return CreateInitializationOperationHandler(resourcePackage,hostServerURL,fallbackHostServerURL);
+            var initializationOperationHandler = CreateInitializationOperationHandler(resourcePackage, hostServerURL, fallbackHostServerURL);
+            initializationOperationHandler.Completed += asyncOperationBase =>
+            {
+                if (asyncOperationBase.Error == null && asyncOperationBase.Status == EOperationStatus.Succeed && asyncOperationBase.IsDone)
+                {
+                    taskCompletionSource.TrySetResult(true);
+                }
+                else
+                {
+                    taskCompletionSource.TrySetException(new Exception(asyncOperationBase.Error));
+                }
+            };
+            return taskCompletionSource.Task;
         }
 
         /// <summary>

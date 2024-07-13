@@ -76,14 +76,14 @@ namespace GameFrameX.Asset.Runtime
         void Initialize();
 
         /// <summary>
-        /// 初始化操作。
+        /// 异步初始化操作
         /// </summary>
         /// <param name="packageName">包名称。</param>
         /// <param name="hostServerURL">热更链接URL。</param>
         /// <param name="fallbackHostServerURL">备用热更链接URL</param>
-        /// <param name="isDefaultPackage">是否是默认包</param>
+        /// <param name="isDefaultPackage">是否是默认包，默认是</param>
         /// <returns></returns>
-        InitializationOperation InitPackage(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false);
+        UniTask<bool> InitPackageAsync(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = true);
 
         /// <summary>
         /// 卸载资源

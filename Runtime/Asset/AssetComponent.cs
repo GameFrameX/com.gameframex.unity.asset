@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameFrameX.Asset;
 using GameFrameX.Runtime;
@@ -67,7 +68,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="host">主下载地址</param>
         /// <param name="fallbackHostServer">备用下载地址</param>
         /// <param name="isDefaultPackage">是否是默认包</param>
-        public async void InitPackage(string packageName, string host, string fallbackHostServer, bool isDefaultPackage = false)
+        public async Task<bool> InitPackageAsync(string packageName, string host, string fallbackHostServer, bool isDefaultPackage = false)
         {
 #if UNITY_EDITOR
             var assetResourcePackageInfo = new AssetResourcePackageInfo()
@@ -81,7 +82,7 @@ namespace GameFrameX.Asset.Runtime
                 m_assetResourcePackages.Add(assetResourcePackageInfo);
             }
 #endif
-            await _assetManager.InitPackage(packageName, host, fallbackHostServer, isDefaultPackage).ToUniTask();
+            return await _assetManager.InitPackageAsync(packageName, host, fallbackHostServer, isDefaultPackage);
         }
 
         #region 异步加载子资源对象
