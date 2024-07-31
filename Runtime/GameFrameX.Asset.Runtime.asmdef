@@ -3,6 +3,7 @@
     "references": [
         "BetterStreamingAssets",
         "GameFrameX.Runtime",
+        "GameFrameX.Event.Runtime",
         "YooAsset.Runtime",
         "UniTask.Runtime"
     ],
