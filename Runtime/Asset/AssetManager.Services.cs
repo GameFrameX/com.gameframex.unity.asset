@@ -27,7 +27,7 @@ namespace GameFrameX.Asset.Runtime
             }
         }
 
-        /// <summary>
+        /*/// <summary>
         /// 内置文件查询服务类
         /// </summary>
         private class QueryStreamingAssetsFileServices : IBuildinQueryServices
@@ -42,6 +42,6 @@ namespace GameFrameX.Asset.Runtime
                 string buildinFolderName = PathHelper.AppResPath;
                 return BetterStreamingAssets.FileExists($"{buildinFolderName}/{fileName}");
             }
-        }
+        }*/
     }
 }

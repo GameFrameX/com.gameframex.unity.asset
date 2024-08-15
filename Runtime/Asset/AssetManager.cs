@@ -20,7 +20,7 @@ namespace GameFrameX.Asset.Runtime
         public int FailedTryAgain { get; set; }
 
 
-        public EVerifyLevel VerifyLevel { get; set; }
+        public EFileVerifyLevel VerifyLevel { get; set; }
         public long Milliseconds { get; set; }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace GameFrameX.Asset.Runtime
         public UniTask<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             var taskCompletionSource = new UniTaskCompletionSource<SceneHandle>();
-            var sceneHandle = YooAssets.LoadSceneAsync(path, sceneMode, !activateOnLoad);
+            var sceneHandle = YooAssets.LoadSceneAsync(path, sceneMode, LocalPhysicsMode.None, !activateOnLoad);
             sceneHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
         }
@@ -364,7 +364,7 @@ namespace GameFrameX.Asset.Runtime
         public UniTask<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             var taskCompletionSource = new UniTaskCompletionSource<SceneHandle>();
-            var sceneHandle = YooAssets.LoadSceneAsync(assetInfo, sceneMode, !activateOnLoad);
+            var sceneHandle = YooAssets.LoadSceneAsync(assetInfo, sceneMode, LocalPhysicsMode.None, !activateOnLoad);
             sceneHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
         }
@@ -474,13 +474,7 @@ namespace GameFrameX.Asset.Runtime
             YooAssets.SetDefaultPackage(resourcePackage);
         }
 
-        /// <summary>
-        /// 销毁资源
-        /// </summary>
-        public void OnDestroy()
-        {
-            YooAssets.Destroy();
-        }
+
 
         protected override void Update(float elapseSeconds, float realElapseSeconds)
         {
@@ -488,7 +482,7 @@ namespace GameFrameX.Asset.Runtime
 
         protected override void Shutdown()
         {
-            OnDestroy();
+            
         }
 
 

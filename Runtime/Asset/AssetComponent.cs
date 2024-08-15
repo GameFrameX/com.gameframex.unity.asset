@@ -404,14 +404,6 @@ namespace GameFrameX.Asset.Runtime
         {
             _assetManager.SetDefaultAssetsPackage(assetsPackage);
         }
-
-        /// <summary>
-        /// 销毁资源
-        /// </summary>
-        private void OnDestroy()
-        {
-            _assetManager.OnDestroy();
-        }
     }
 #if UNITY_EDITOR
     [Serializable]

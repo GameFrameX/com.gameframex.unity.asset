@@ -42,32 +42,38 @@ namespace GameFrameX.Asset.Runtime
         private InitializationOperation InitializeYooAssetEditorSimulateMode(ResourcePackage resourcePackage)
         {
             var initParameters = new EditorSimulateModeParameters();
-            initParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), DefaultPackageName);
-
+            //注意：如果是原生文件系统选择EDefaultBuildPipeline.RawFileBuildPipeline
+            var buildPipeline = EDefaultBuildPipeline.BuiltinBuildPipeline;
+            var simulateBuildResult = EditorSimulateModeHelper.SimulateBuild(buildPipeline, DefaultPackageName);
+            var editorFileSystem = FileSystemParameters.CreateDefaultEditorFileSystemParameters(simulateBuildResult);
+            initParameters.EditorFileSystemParameters = editorFileSystem;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
         private InitializationOperation InitializeYooAssetOfflinePlayMode(ResourcePackage resourcePackage)
         {
+            var buildinFileSystem = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
             var initParameters = new OfflinePlayModeParameters();
+            initParameters.BuildinFileSystemParameters = buildinFileSystem;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
         private InitializationOperation InitializeYooAssetWebPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
+            var webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
             var initParameters = new WebPlayModeParameters();
-            initParameters.BuildinQueryServices = new QueryStreamingAssetsFileServices();
-            initParameters.RemoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
+            initParameters.WebFileSystemParameters = webFileSystem;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
         private InitializationOperation InitializeYooAssetHostPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
+            IRemoteServices remoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
+            var cacheFileSystem = FileSystemParameters.CreateDefaultCacheFileSystemParameters(remoteServices);
+            var buildinFileSystem = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
             var initParameters = new HostPlayModeParameters();
-            initParameters.BuildinQueryServices = new QueryStreamingAssetsFileServices();
-            initParameters.RemoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
-            // initParameters.DeliveryQueryServices = new WebDeliveryQueryServices();
-            // initParameters.DeliveryLoadServices = new WebDeliveryLoadServices();
+            initParameters.BuildinFileSystemParameters = buildinFileSystem;
+            initParameters.CacheFileSystemParameters = cacheFileSystem;
             return resourcePackage.InitializeAsync(initParameters);
         }
     }

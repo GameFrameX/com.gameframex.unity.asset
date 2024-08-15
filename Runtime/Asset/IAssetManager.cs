@@ -56,7 +56,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 获取或设置下载文件校验等级。
         /// </summary>
-        EVerifyLevel VerifyLevel { get; }
+        EFileVerifyLevel VerifyLevel { get; }
 
         /// <summary>
         /// 获取或设置异步系统参数，每帧执行消耗的最大时间切片（单位：毫秒）。
@@ -334,10 +334,5 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="resourcePackage">资源信息</param>
         /// <returns></returns>
         void SetDefaultAssetsPackage(ResourcePackage resourcePackage);
-
-        /// <summary>
-        /// 销毁资源
-        /// </summary>
-        void OnDestroy();
     }
 }
