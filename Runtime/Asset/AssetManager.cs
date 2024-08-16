@@ -94,6 +94,51 @@ namespace GameFrameX.Asset.Runtime
         }
 
 
+        /// <summary>
+        /// 强制回收所有资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void UnloadAllAssetsAsync(string packageName)
+        {
+            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            var package = YooAssets.GetPackage(packageName);
+            package.UnloadAllAssetsAsync();
+        }
+
+        /// <summary>
+        /// 卸载无用资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void UnloadUnusedAssetsAsync(string packageName)
+        {
+            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            var package = YooAssets.GetPackage(packageName);
+            package.UnloadUnusedAssetsAsync();
+        }
+
+        /// <summary>
+        /// 清理所有资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void ClearAllBundleFilesAsync(string packageName)
+        {
+            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            var package = YooAssets.GetPackage(packageName);
+            package.ClearAllBundleFilesAsync();
+        }
+
+        /// <summary>
+        /// 清理无用资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void ClearUnusedBundleFilesAsync(string packageName)
+        {
+            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            var package = YooAssets.GetPackage(packageName);
+            package.ClearUnusedBundleFilesAsync();
+        }
+
+
         #region 异步加载子资源对象
 
         /// <summary>
@@ -475,14 +520,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
 
-
         protected override void Update(float elapseSeconds, float realElapseSeconds)
         {
         }
 
         protected override void Shutdown()
         {
-            
         }
 
 

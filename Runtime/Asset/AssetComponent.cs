@@ -404,6 +404,42 @@ namespace GameFrameX.Asset.Runtime
         {
             _assetManager.SetDefaultAssetsPackage(assetsPackage);
         }
+
+        /// <summary>
+        /// 强制回收所有资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void UnloadAllAssetsAsync(string packageName)
+        {
+            _assetManager.UnloadAllAssetsAsync(packageName);
+        }
+
+        /// <summary>
+        /// 卸载无用资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void UnloadUnusedAssetsAsync(string packageName)
+        {
+            _assetManager.UnloadUnusedAssetsAsync(packageName);
+        }
+
+        /// <summary>
+        /// 清理所有资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void ClearAllBundleFilesAsync(string packageName)
+        {
+            _assetManager.ClearAllBundleFilesAsync(packageName);
+        }
+
+        /// <summary>
+        /// 清理无用资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        public void ClearUnusedBundleFilesAsync(string packageName)
+        {
+            _assetManager.ClearUnusedBundleFilesAsync(packageName);
+        }
     }
 #if UNITY_EDITOR
     [Serializable]
