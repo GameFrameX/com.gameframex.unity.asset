@@ -1,3 +1,4 @@
+using UnityEngine;
 using YooAsset;
 
 namespace GameFrameX.Asset.Runtime
@@ -64,7 +65,7 @@ namespace GameFrameX.Asset.Runtime
 
 #if ENABLE_DOUYIN_MINI_GAME
             // 创建微信小游戏文件系统
-            var webFileSystem = DouYinFileSystemCreater.CreateDouYinFileSystemParameters(null);
+            var webFileSystem = DouYinFileSystemCreater.CreateDouYinFileSystemParameters(resourcePackage.PackageName);
 #elif ENABLE_WECHAT_MINI_GAME
             // 创建微信小游戏文件系统
             var webFileSystem = WechatFileSystemCreater.CreateWechatFileSystemParameters(null);
