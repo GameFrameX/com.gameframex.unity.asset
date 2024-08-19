@@ -60,9 +60,26 @@ namespace GameFrameX.Asset.Runtime
 
         private InitializationOperation InitializeYooAssetWebPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
+#if UNITY_WEBGL
+
+#if ENABLE_DOUYIN_MINI_GAME
+            // 创建微信小游戏文件系统
+            var webFileSystem = DouYinFileSystemCreater.CreateDouYinFileSystemParameters(null);
+#elif ENABLE_WECHAT_MINI_GAME
+            // 创建微信小游戏文件系统
+            var webFileSystem = WechatFileSystemCreater.CreateWechatFileSystemParameters(null);
+#else
+            // 创建默认WebGL文件系统
             var webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
-            var initParameters = new WebPlayModeParameters();
-            initParameters.WebFileSystemParameters = webFileSystem;
+#endif
+#else
+            var webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
+#endif
+
+            var initParameters = new WebPlayModeParameters
+            {
+                WebFileSystemParameters = webFileSystem,
+            };
             return resourcePackage.InitializeAsync(initParameters);
         }
 
