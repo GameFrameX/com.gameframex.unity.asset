@@ -334,5 +334,29 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="resourcePackage">资源信息</param>
         /// <returns></returns>
         void SetDefaultAssetsPackage(ResourcePackage resourcePackage);
+
+        /// <summary>
+        /// 清理无用资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        void ClearUnusedBundleFilesAsync(string packageName);
+
+        /// <summary>
+        /// 清理所有资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        void ClearAllBundleFilesAsync(string packageName);
+
+        /// <summary>
+        /// 卸载无用资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        void UnloadUnusedAssetsAsync(string packageName);
+
+        /// <summary>
+        /// 强制回收所有资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        void UnloadAllAssetsAsync(string packageName);
     }
 }
