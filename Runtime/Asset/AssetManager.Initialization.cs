@@ -69,16 +69,15 @@ namespace GameFrameX.Asset.Runtime
             var webFileSystem = DouYinFileSystemCreater.CreateDouYinFileSystemParameters(resourcePackage.PackageName);
 #elif ENABLE_WECHAT_MINI_GAME
             // 创建微信小游戏文件系统
-            var webFileSystem = WechatFileSystemCreater.CreateWechatFileSystemParameters(null);
+            var webFileSystem = WechatFileSystemCreater.CreateWechatFileSystemParameters();
 #else
             // 创建默认WebGL文件系统
             var webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
-            initParameters.WebFileSystemParameters = webFileSystem;
 #endif
 #else
             var webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
-            initParameters.WebFileSystemParameters = webFileSystem;
 #endif
+            initParameters.WebFileSystemParameters = webFileSystem;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
