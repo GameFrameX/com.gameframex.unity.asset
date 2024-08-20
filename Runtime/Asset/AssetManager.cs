@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using GameFrameX.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
@@ -30,13 +31,13 @@ namespace GameFrameX.Asset.Runtime
         public void Initialize()
         {
             BetterStreamingAssets.Initialize();
-            Debug.Log($"资源系统运行模式：{PlayMode}");
+            Log.Info($"资源系统运行模式：{PlayMode}");
             YooAssets.Initialize();
             YooAssets.SetOperationSystemMaxTimeSlice(30);
             // YooAssets.SetCacheSystemCachedFileVerifyLevel(EVerifyLevel.High);
             // YooAssets.SetDownloadSystemBreakpointResumeFileSize(4096 * 8);
 
-            Debug.Log("Asset Init Over");
+            Log.Info("Asset Init Over");
         }
 
 
