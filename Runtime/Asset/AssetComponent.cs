@@ -238,6 +238,28 @@ namespace GameFrameX.Asset.Runtime
             return _assetManager.LoadAssetAsync<T>(path);
         }
 
+        /// <summary>
+        /// 异步加载全部资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <typeparam name="T">资源类型</typeparam>
+        /// <returns></returns>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object
+        {
+            return _assetManager.LoadAllAssetsAsync<T>(path);
+        }
+
+        /// <summary>
+        /// 异步加载全部资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <param name="type">资源类型</param>
+        /// <returns></returns>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type)
+        {
+            return _assetManager.LoadAllAssetsAsync(path, type);
+        }
+
         #endregion
 
         #region 同步加载资源

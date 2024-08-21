@@ -313,6 +313,33 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
+        /// 异步加载全部资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object
+        {
+            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var assetHandle = YooAssets.LoadAllAssetsAsync<T>(path);
+            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
+        /// 异步加载全部资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <param name="type">资源类型</param>
+        /// <returns></returns>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type)
+        {
+            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var assetHandle = YooAssets.LoadAllAssetsAsync(path, type);
+            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
         /// 异步加载资源
         /// </summary>
         /// <param name="path">资源路径</param>
