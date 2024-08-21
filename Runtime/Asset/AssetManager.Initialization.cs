@@ -68,6 +68,7 @@ namespace GameFrameX.Asset.Runtime
             // 创建微信小游戏文件系统
             var webFileSystem = DouYinFileSystemCreater.CreateDouYinFileSystemParameters(resourcePackage.PackageName);
 #elif ENABLE_WECHAT_MINI_GAME
+            WeChatWASM.WXBase.PreloadConcurrent(10);
             // 创建微信小游戏文件系统
             var webFileSystem = WechatFileSystemCreater.CreateWechatFileSystemParameters();
 #else
