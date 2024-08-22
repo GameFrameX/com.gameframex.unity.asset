@@ -117,14 +117,14 @@ namespace GameFrameX.Asset.Runtime
 
         #endregion
 
-        #region 异步加载子资源对象
+        #region 同步加载子资源对象
 
         /// <summary>
         /// 同步加载子资源对象
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
-        UniTask<SubAssetsHandle> LoadSubAssetsSync(AssetInfo assetInfo);
+        SubAssetsHandle LoadSubAssetSync(AssetInfo assetInfo);
 
         /// <summary>
         /// 同步加载子资源对象
@@ -132,14 +132,14 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type"></param>
         /// <returns></returns>
-        UniTask<SubAssetsHandle> LoadSubAssetsSync(string path, Type type);
+        SubAssetsHandle LoadSubAssetSync(string path, Type type);
 
         /// <summary>
         /// 同步加载子资源对象
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
-        UniTask<SubAssetsHandle> LoadSubAssetsSync<T>(string path) where T : Object;
+        SubAssetsHandle LoadSubAssetSync<T>(string path) where T : Object;
 
         #endregion
 
@@ -220,17 +220,84 @@ namespace GameFrameX.Asset.Runtime
         /// <returns></returns>
         UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type);
 
-        /// <summary>
+        /*/// <summary>
         /// 异步加载资源。
         /// </summary>
         /// <param name="assetPath"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        System.Threading.Tasks.Task<T> LoadAssetTaskAsync<T>(string assetPath) where T : UnityEngine.Object;
+        System.Threading.Tasks.Task<T> LoadAssetTaskAsync<T>(string assetPath) where T : UnityEngine.Object;*/
+
+
+        /// <summary>
+        /// 异步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path);
+
+        /// <summary>
+        /// 异步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="assetInfo">资源信息</param>
+        UniTask<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo);
+
+        /// <summary>
+        /// 异步加载资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        UniTask<AssetHandle> LoadAssetAsync(string path);
+
+        /// <summary>
+        /// 异步加载子资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        SubAssetsHandle LoadSubAssetsAsync(string path);
 
         #endregion
 
         #region 同步加载资源
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        AllAssetsHandle LoadAllAssetsSync(string path);
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <typeparam name="T">资源类型</typeparam>
+        /// <param name="path">资源的定位地址</param>
+        AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : Object;
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        /// <param name="type">子对象类型</param>
+        AllAssetsHandle LoadAllAssetsSync(string path, Type type);
+
+        /// <summary>
+        /// 同步加载包内全部资源对象
+        /// </summary>
+        /// <param name="assetInfo">资源信息</param>
+        /// <returns></returns>
+        AllAssetsHandle LoadAllAssetsSync(AssetInfo assetInfo);
+
+        /// <summary>
+        /// 同步加载子资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        SubAssetsHandle LoadSubAssetSync(string path);
+
+        /// <summary>
+        /// 同步加载资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        AssetHandle LoadAssetSync(string path);
 
         /// <summary>
         /// 同步加载资源

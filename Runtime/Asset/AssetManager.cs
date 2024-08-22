@@ -191,12 +191,9 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
-        public UniTask<SubAssetsHandle> LoadSubAssetsSync(AssetInfo assetInfo)
+        public SubAssetsHandle LoadSubAssetSync(AssetInfo assetInfo)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SubAssetsHandle>();
-            var assetHandle = YooAssets.LoadSubAssetsSync(assetInfo);
-            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
-            return taskCompletionSource.Task;
+            return YooAssets.LoadSubAssetsSync(assetInfo);
         }
 
         /// <summary>
@@ -205,12 +202,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public UniTask<SubAssetsHandle> LoadSubAssetsSync(string path, Type type)
+        public SubAssetsHandle LoadSubAssetSync(string path, Type type)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SubAssetsHandle>();
-            var assetHandle = YooAssets.LoadSubAssetsSync(path, type);
-            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
-            return taskCompletionSource.Task;
+            return YooAssets.LoadSubAssetsSync(path, type);
         }
 
         /// <summary>
@@ -218,12 +212,9 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
-        public UniTask<SubAssetsHandle> LoadSubAssetsSync<T>(string path) where T : Object
+        public SubAssetsHandle LoadSubAssetSync<T>(string path) where T : Object
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SubAssetsHandle>();
-            var assetHandle = YooAssets.LoadSubAssetsSync<T>(path);
-            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
-            return taskCompletionSource.Task;
+            return YooAssets.LoadSubAssetsSync<T>(path);
         }
 
         #endregion
@@ -340,6 +331,53 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
+        /// 异步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path)
+        {
+            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var assetHandle = YooAssets.LoadAllAssetsAsync(path);
+            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
+        /// 异步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="assetInfo">资源信息</param>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo)
+        {
+            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var assetHandle = YooAssets.LoadAllAssetsAsync(assetInfo);
+            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
+        /// 异步加载子资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        public SubAssetsHandle LoadSubAssetsAsync(string path)
+        {
+            return YooAssets.LoadSubAssetsAsync(path);
+        }
+
+
+        /// <summary>
+        /// 异步加载资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public UniTask<AssetHandle> LoadAssetAsync(string path)
+        {
+            var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
+            var assetHandle = YooAssets.LoadAssetAsync(path);
+            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
+            return taskCompletionSource.Task;
+        }
+
+        /// <summary>
         /// 异步加载资源
         /// </summary>
         /// <param name="path">资源路径</param>
@@ -353,6 +391,7 @@ namespace GameFrameX.Asset.Runtime
             return taskCompletionSource.Task;
         }
 
+        /*
         public async Task<TObject> LoadAssetTaskAsync<TObject>(string assetPath) where TObject : Object
         {
             ResourcePackage assetPackage = YooAssets.TryGetPackage(DefaultPackageName);
@@ -371,11 +410,70 @@ namespace GameFrameX.Asset.Runtime
             }
 
             return result;
-        }
+        }*/
 
         #endregion
 
         #region 同步加载资源
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        public AllAssetsHandle LoadAllAssetsSync(string path)
+        {
+            return YooAssets.LoadAllAssetsSync(path);
+        }
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <typeparam name="T">资源类型</typeparam>
+        /// <param name="path">资源的定位地址</param>
+        public AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : Object
+        {
+            return YooAssets.LoadAllAssetsSync<T>(path);
+        }
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        /// <param name="type">子对象类型</param>
+        public AllAssetsHandle LoadAllAssetsSync(string path, Type type)
+        {
+            return YooAssets.LoadAllAssetsSync(path, type);
+        }
+
+        /// <summary>
+        /// 同步加载包内全部资源对象
+        /// </summary>
+        /// <param name="assetInfo">资源信息</param>
+        /// <returns></returns>
+        public AllAssetsHandle LoadAllAssetsSync(AssetInfo assetInfo)
+        {
+            return YooAssets.LoadAllAssetsSync(assetInfo);
+        }
+
+        /// <summary>
+        /// 同步加载子资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public SubAssetsHandle LoadSubAssetSync(string path)
+        {
+            return YooAssets.LoadSubAssetsSync(path);
+        }
+
+        /// <summary>
+        /// 同步加载资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public AssetHandle LoadAssetSync(string path)
+        {
+            return YooAssets.LoadAssetSync(path);
+        }
 
         /// <summary>
         /// 同步加载资源

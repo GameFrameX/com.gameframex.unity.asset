@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using GameFrameX.Asset;
 using GameFrameX.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -120,16 +119,16 @@ namespace GameFrameX.Asset.Runtime
 
         #endregion
 
-        #region 异步加载子资源对象
+        #region 同步加载子资源对象
 
         /// <summary>
         /// 同步加载子资源对象
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
-        public UniTask<SubAssetsHandle> LoadSubAssetsSync(AssetInfo assetInfo)
+        public SubAssetsHandle LoadSubAssetSync(AssetInfo assetInfo)
         {
-            return _assetManager.LoadSubAssetsAsync(assetInfo);
+            return _assetManager.LoadSubAssetSync(assetInfo);
         }
 
         /// <summary>
@@ -138,9 +137,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public UniTask<SubAssetsHandle> LoadSubAssetsSync(string path, Type type)
+        public SubAssetsHandle LoadSubAssetSync(string path, Type type)
         {
-            return _assetManager.LoadSubAssetsAsync(path, type);
+            return _assetManager.LoadSubAssetSync(path, type);
         }
 
         /// <summary>
@@ -148,9 +147,9 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
-        public UniTask<SubAssetsHandle> LoadSubAssetsSync<T>(string path) where T : Object
+        public SubAssetsHandle LoadSubAssetSync<T>(string path) where T : Object
         {
-            return _assetManager.LoadSubAssetsAsync<T>(path);
+            return _assetManager.LoadSubAssetSync<T>(path);
         }
 
         #endregion
@@ -260,9 +259,105 @@ namespace GameFrameX.Asset.Runtime
             return _assetManager.LoadAllAssetsAsync(path, type);
         }
 
+        /// <summary>
+        /// 异步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path)
+        {
+            return _assetManager.LoadAllAssetsAsync(path);
+        }
+
+        /// <summary>
+        /// 异步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="assetInfo">资源信息</param>
+        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo)
+        {
+            return _assetManager.LoadAllAssetsAsync(assetInfo);
+        }
+
+        /// <summary>
+        /// 异步加载资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public UniTask<AssetHandle> LoadAssetAsync(string path)
+        {
+            return _assetManager.LoadAssetAsync(path);
+        }
+
+        /// <summary>
+        /// 异步加载子资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        public SubAssetsHandle LoadSubAssetsAsync(string path)
+        {
+            return _assetManager.LoadSubAssetsAsync(path);
+        }
+
         #endregion
 
         #region 同步加载资源
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        public AllAssetsHandle LoadAllAssetsSync(string path)
+        {
+            return _assetManager.LoadAllAssetsSync(path);
+        }
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <typeparam name="T">资源类型</typeparam>
+        /// <param name="path">资源的定位地址</param>
+        public AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : Object
+        {
+            return _assetManager.LoadAllAssetsSync<T>(path);
+        }
+
+        /// <summary>
+        /// 同步加载资源包内所有资源对象
+        /// </summary>
+        /// <param name="path">资源的定位地址</param>
+        /// <param name="type">子对象类型</param>
+        public AllAssetsHandle LoadAllAssetsSync(string path, Type type)
+        {
+            return _assetManager.LoadAllAssetsSync(path, type);
+        }
+
+        /// <summary>
+        /// 同步加载包内全部资源对象
+        /// </summary>
+        /// <param name="assetInfo">资源信息</param>
+        /// <returns></returns>
+        public AllAssetsHandle LoadAllAssetsSync(AssetInfo assetInfo)
+        {
+            return _assetManager.LoadAllAssetsSync(assetInfo);
+        }
+
+        /// <summary>
+        /// 同步加载子资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public SubAssetsHandle LoadSubAssetsSync(string path)
+        {
+            return _assetManager.LoadSubAssetSync(path);
+        }
+
+        /// <summary>
+        /// 同步加载资源
+        /// </summary>
+        /// <param name="path">资源路径</param>
+        /// <returns></returns>
+        public AssetHandle LoadAssetsSync(string path)
+        {
+            return _assetManager.LoadAssetSync(path);
+        }
 
         /// <summary>
         /// 同步加载资源
