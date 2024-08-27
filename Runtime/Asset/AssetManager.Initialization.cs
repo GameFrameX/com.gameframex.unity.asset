@@ -65,8 +65,8 @@ namespace GameFrameX.Asset.Runtime
 #if UNITY_WEBGL
 
 #if ENABLE_DOUYIN_MINI_GAME
-            // 创建微信小游戏文件系统
-            var webFileSystem = DouYinFileSystemCreater.CreateDouYinFileSystemParameters(resourcePackage.PackageName);
+            // 创建字节小游戏文件系统
+            var webFileSystem = ByteGameFileSystemCreater.CreateByteGameFileSystemParameters();
 #elif ENABLE_WECHAT_MINI_GAME
             WeChatWASM.WXBase.PreloadConcurrent(10);
             // 创建微信小游戏文件系统
