@@ -440,5 +440,12 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         void UnloadAllAssetsAsync(string packageName);
+
+        /// <summary>
+        /// 卸载资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        /// <param name="assetPath">资源路径</param>
+        void UnloadAsset(string packageName, string assetPath);
     }
 }

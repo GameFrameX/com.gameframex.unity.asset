@@ -94,6 +94,19 @@ namespace GameFrameX.Asset.Runtime
             package.TryUnloadUnusedAsset(assetPath);
         }
 
+        /// <summary>
+        /// 卸载资源
+        /// </summary>
+        /// <param name="packageName">资源包名称</param>
+        /// <param name="assetPath">资源路径</param>
+        public void UnloadAsset(string packageName, string assetPath)
+        {
+            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            GameFrameworkGuard.NotNull(assetPath, nameof(assetPath));
+            var package = YooAssets.GetPackage(packageName);
+            package.TryUnloadUnusedAsset(assetPath);
+        }
+
 
         /// <summary>
         /// 强制回收所有资源
@@ -386,8 +399,15 @@ namespace GameFrameX.Asset.Runtime
         public UniTask<AssetHandle> LoadAssetAsync<T>(string path) where T : Object
         {
             var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
+            taskCompletionSource.Task.Timeout(TimeSpan.FromSeconds(10));
             var assetHandle = YooAssets.LoadAssetAsync<T>(path);
-            assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
+
+            void OnAssetHandleOnCompleted(AssetHandle handle)
+            {
+                taskCompletionSource.TrySetResult(handle);
+            }
+
+            assetHandle.Completed += OnAssetHandleOnCompleted;
             return taskCompletionSource.Task;
         }
 
