@@ -399,7 +399,6 @@ namespace GameFrameX.Asset.Runtime
         public UniTask<AssetHandle> LoadAssetAsync<T>(string path) where T : Object
         {
             var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
-            taskCompletionSource.Task.Timeout(TimeSpan.FromSeconds(10));
             var assetHandle = YooAssets.LoadAssetAsync<T>(path);
 
             void OnAssetHandleOnCompleted(AssetHandle handle)
