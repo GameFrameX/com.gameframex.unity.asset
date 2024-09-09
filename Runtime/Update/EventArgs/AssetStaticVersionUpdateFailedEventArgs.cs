@@ -15,7 +15,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 资源版本号更新失败事件编号
         /// </summary>
-        public static readonly string EventId = nameof(AssetStaticVersionUpdateFailedEventArgs);
+        public static readonly string EventId = typeof(AssetStaticVersionUpdateFailedEventArgs).FullName;
 
         public override string Id
         {

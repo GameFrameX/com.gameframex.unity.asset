@@ -15,7 +15,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 补丁清单更新失败事件编号
         /// </summary>
-        public static readonly string EventId = nameof(AssetPatchManifestUpdateFailedEventArgs);
+        public static readonly string EventId = typeof(AssetPatchManifestUpdateFailedEventArgs).FullName;
 
         public override string Id
         {

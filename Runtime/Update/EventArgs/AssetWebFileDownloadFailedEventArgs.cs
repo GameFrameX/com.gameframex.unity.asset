@@ -30,7 +30,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 网络文件下载失败事件编号
         /// </summary>
-        public static readonly string EventId = nameof(AssetWebFileDownloadFailedEventArgs);
+        public static readonly string EventId = typeof(AssetWebFileDownloadFailedEventArgs).FullName;
 
         public override string Id
         {

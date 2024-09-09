@@ -30,7 +30,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 发现更新文件事件编号
         /// </summary>
-        public static readonly string EventId = nameof(AssetFoundUpdateFilesEventArgs);
+        public static readonly string EventId = typeof(AssetFoundUpdateFilesEventArgs).FullName;
 
         public override string Id
         {

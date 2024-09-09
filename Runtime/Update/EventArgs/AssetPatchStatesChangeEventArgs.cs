@@ -12,7 +12,12 @@ namespace GameFrameX.Asset.Runtime
         {
         }
 
-        public override string Id { get; } = nameof(AssetPatchStatesChangeEventArgs);
+        public static readonly string EventId = typeof(AssetPatchStatesChangeEventArgs).FullName;
+
+        public override string Id
+        {
+            get { return EventId; }
+        }
 
         /// <summary>
         /// 包名称
