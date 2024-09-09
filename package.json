@@ -3,20 +3,20 @@
   "displayName": "Game Frame X Asset",
   "category": "Game Framework X",
   "description": "Game Frame X Asset Component",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "unity": "2017.1",
   "keywords": [
     "Game Framework X"
   ],
   "repository": {
     "name": "com.gameframex.unity.asset",
-    "url": "https://github.com/AlianBlank/com.gameframex.unity.asset.git",
+    "url": "https://github.com/GameFrameX/com.gameframex.unity.asset.git",
     "type": "git"
   },
   "author": {
     "name": "Blank",
     "email": "alianblank@outlook.com",
-    "url": "https://alianblank.com/"
+    "url": "https://gameframex.doc.alianblank.com"
   },
   "dependencies": {
   }
