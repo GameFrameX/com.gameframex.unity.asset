@@ -43,7 +43,7 @@ namespace GameFrameX.Asset.Runtime
 #if UNITY_WEBGL && !UNITY_EDITOR
             GamePlayMode = EPlayMode.WebPlayMode;
 #endif
-            ImplementationComponentType = Type.GetType(componentType);
+            ImplementationComponentType = Utility.Assembly.GetType(componentType);
             InterfaceComponentType = typeof(IAssetManager);
             base.Awake();
             _assetManager = GameFrameworkEntry.GetModule<IAssetManager>();
