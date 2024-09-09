@@ -10,6 +10,8 @@ namespace GameFrameX.Asset.Runtime
     {
         public override void Clear()
         {
+            PackageName = null;
+            CurrentStates = EPatchStates.CreateDownloader;
         }
 
         public static readonly string EventId = typeof(AssetPatchStatesChangeEventArgs).FullName;

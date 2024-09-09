@@ -10,6 +10,8 @@ namespace GameFrameX.Asset.Runtime
     {
         public override void Clear()
         {
+            PackageName = null;
+            Error = null;
         }
 
         /// <summary>

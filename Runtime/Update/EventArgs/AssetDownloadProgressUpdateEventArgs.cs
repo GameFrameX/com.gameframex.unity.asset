@@ -35,6 +35,11 @@ namespace GameFrameX.Asset.Runtime
 
         public override void Clear()
         {
+            PackageName = null;
+            TotalDownloadCount = 0;
+            CurrentDownloadCount = 0;
+            TotalDownloadSizeBytes = 0;
+            CurrentDownloadSizeBytes = 0;
         }
 
         /// <summary>

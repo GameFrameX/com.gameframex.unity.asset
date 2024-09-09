@@ -25,6 +25,9 @@ namespace GameFrameX.Asset.Runtime
 
         public override void Clear()
         {
+            FileName = null;
+            Error = null;
+            PackageName = null;
         }
 
         /// <summary>

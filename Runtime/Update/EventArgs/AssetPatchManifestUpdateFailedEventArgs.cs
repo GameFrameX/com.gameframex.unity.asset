@@ -10,6 +10,8 @@ namespace GameFrameX.Asset.Runtime
     {
         public override void Clear()
         {
+            PackageName = null;
+            Error = null;
         }
 
         /// <summary>
@@ -27,6 +29,9 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         public string PackageName { get; private set; }
 
+        /// <summary>
+        /// 错误信息
+        /// </summary>
         public string Error { get; private set; }
 
         /// <summary>
