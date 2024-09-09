@@ -15,6 +15,7 @@ namespace GameFrameX.Asset.Runtime
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu("Game Framework/Asset")]
+    [UnityEngine.Scripting.Preserve]
     public sealed class AssetComponent : GameFrameworkComponent
     {
         [Tooltip("当目标平台为Web平台时，将会强制设置为" + nameof(EPlayMode.WebPlayMode))] [SerializeField]

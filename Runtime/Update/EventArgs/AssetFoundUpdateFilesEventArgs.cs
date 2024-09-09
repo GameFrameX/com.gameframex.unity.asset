@@ -5,6 +5,7 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 发现更新文件
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class AssetFoundUpdateFilesEventArgs : GameEventArgs
     {
         /// <summary>
@@ -46,9 +47,9 @@ namespace GameFrameX.Asset.Runtime
         public static AssetFoundUpdateFilesEventArgs Create(string packageName, int totalCount, long totalSizeBytes)
         {
             var foundUpdateFiles = ReferencePool.Acquire<AssetFoundUpdateFilesEventArgs>();
-            foundUpdateFiles.TotalCount     = totalCount;
+            foundUpdateFiles.TotalCount = totalCount;
             foundUpdateFiles.TotalSizeBytes = totalSizeBytes;
-            foundUpdateFiles.PackageName    = packageName;
+            foundUpdateFiles.PackageName = packageName;
             return foundUpdateFiles;
         }
     }

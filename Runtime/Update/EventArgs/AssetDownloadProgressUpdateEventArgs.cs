@@ -5,6 +5,7 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 下载进度更新
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class AssetDownloadProgressUpdateEventArgs : GameEventArgs
     {
         /// <summary>
@@ -59,11 +60,11 @@ namespace GameFrameX.Asset.Runtime
         public static AssetDownloadProgressUpdateEventArgs Create(string packageName, int totalDownloadCount, int currentDownloadCount, long totalDownloadSizeBytes, long currentDownloadSizeBytes)
         {
             var assetDownloadProgressUpdate = ReferencePool.Acquire<AssetDownloadProgressUpdateEventArgs>();
-            assetDownloadProgressUpdate.TotalDownloadCount       = totalDownloadCount;
-            assetDownloadProgressUpdate.CurrentDownloadCount     = currentDownloadCount;
-            assetDownloadProgressUpdate.TotalDownloadSizeBytes   = totalDownloadSizeBytes;
+            assetDownloadProgressUpdate.TotalDownloadCount = totalDownloadCount;
+            assetDownloadProgressUpdate.CurrentDownloadCount = currentDownloadCount;
+            assetDownloadProgressUpdate.TotalDownloadSizeBytes = totalDownloadSizeBytes;
             assetDownloadProgressUpdate.CurrentDownloadSizeBytes = currentDownloadSizeBytes;
-            assetDownloadProgressUpdate.PackageName              = packageName;
+            assetDownloadProgressUpdate.PackageName = packageName;
             return assetDownloadProgressUpdate;
         }
     }

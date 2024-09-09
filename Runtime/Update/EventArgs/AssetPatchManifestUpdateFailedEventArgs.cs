@@ -5,6 +5,7 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 补丁清单更新失败
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class AssetPatchManifestUpdateFailedEventArgs : GameEventArgs
     {
         public override void Clear()
@@ -38,7 +39,7 @@ namespace GameFrameX.Asset.Runtime
         {
             var assetPatchManifestUpdateFailed = ReferencePool.Acquire<AssetPatchManifestUpdateFailedEventArgs>();
             assetPatchManifestUpdateFailed.PackageName = packageName;
-            assetPatchManifestUpdateFailed.Error       = error;
+            assetPatchManifestUpdateFailed.Error = error;
             return assetPatchManifestUpdateFailed;
         }
     }

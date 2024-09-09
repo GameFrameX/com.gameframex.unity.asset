@@ -5,6 +5,7 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 补丁流程步骤改变
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class AssetPatchStatesChangeEventArgs : GameEventArgs
     {
         public override void Clear()
@@ -32,7 +33,7 @@ namespace GameFrameX.Asset.Runtime
         public static AssetPatchStatesChangeEventArgs Create(string packageName, EPatchStates currentStates)
         {
             var assetPatchStatesChange = ReferencePool.Acquire<AssetPatchStatesChangeEventArgs>();
-            assetPatchStatesChange.PackageName   = packageName;
+            assetPatchStatesChange.PackageName = packageName;
             assetPatchStatesChange.CurrentStates = currentStates;
             return assetPatchStatesChange;
         }

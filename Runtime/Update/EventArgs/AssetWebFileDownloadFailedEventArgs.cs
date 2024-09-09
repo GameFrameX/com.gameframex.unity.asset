@@ -5,6 +5,7 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 网络文件下载失败
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class AssetWebFileDownloadFailedEventArgs : GameEventArgs
     {
         /// <summary>
@@ -46,8 +47,8 @@ namespace GameFrameX.Asset.Runtime
         public static AssetWebFileDownloadFailedEventArgs Create(string packageName, string fileName, string error)
         {
             var assetWebFileDownloadFailed = ReferencePool.Acquire<AssetWebFileDownloadFailedEventArgs>();
-            assetWebFileDownloadFailed.FileName    = fileName;
-            assetWebFileDownloadFailed.Error       = error;
+            assetWebFileDownloadFailed.FileName = fileName;
+            assetWebFileDownloadFailed.Error = error;
             assetWebFileDownloadFailed.PackageName = packageName;
             return assetWebFileDownloadFailed;
         }

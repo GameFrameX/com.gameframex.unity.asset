@@ -1,8 +1,6 @@
 using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameFrameX.Runtime;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
 using Object = UnityEngine.Object;
@@ -12,6 +10,7 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 资源组件。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public partial class AssetManager : GameFrameworkModule, IAssetManager
     {
         public string DefaultPackageName { get; set; } = "DefaultPackage";
