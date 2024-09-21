@@ -1,4 +1,5 @@
 ﻿using GameFrameX.Event.Runtime;
+using GameFrameX.Runtime;
 
 namespace GameFrameX.Asset.Runtime
 {
