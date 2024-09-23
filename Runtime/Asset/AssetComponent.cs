@@ -40,8 +40,14 @@ namespace GameFrameX.Asset.Runtime
 
         protected override void Awake()
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if !UNITY_EDITOR
+            if (GamePlayMode == EPlayMode.EditorSimulateMode)
+            {
+                GamePlayMode = EPlayMode.HostPlayMode;
+            }
+#if UNITY_WEBGL
             GamePlayMode = EPlayMode.WebPlayMode;
+#endif
 #endif
             ImplementationComponentType = Utility.Assembly.GetType(componentType);
             InterfaceComponentType = typeof(IAssetManager);
