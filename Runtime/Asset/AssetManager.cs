@@ -652,6 +652,15 @@ namespace GameFrameX.Asset.Runtime
             return YooAssets.GetAssetInfo(path);
         }
 
+        /// <summary>
+        /// 检查指定的资源路径是否有效。
+        /// </summary>
+        /// <param name="path">要检查的资源路径。</param>
+        /// <returns>如果资源路径有效，则返回 true；否则返回 false。</returns>
+        public bool HasAssetPath(string path)
+        {
+            return YooAssets.CheckLocationValid(path);
+        }
 
         /// <summary>
         /// 设置默认资源包

@@ -520,6 +520,16 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
+        /// 检查指定的资源路径是否存在。
+        /// </summary>
+        /// <param name="assetPath">要检查的资源路径。</param>
+        /// <returns>如果存在指定的资源路径，则返回 true；否则返回 false。</returns>
+        public bool HasAssetPath(string assetPath)
+        {
+            return _assetManager.HasAssetPath(assetPath);
+        }
+
+        /// <summary>
         /// 设置默认资源包
         /// </summary>
         /// <param name="assetsPackage">资源信息</param>
