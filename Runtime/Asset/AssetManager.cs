@@ -85,7 +85,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 卸载资源
         /// </summary>
-        /// <param name="assetPath"></param>
+        /// <param name="assetPath">资源路径</param>
         public void UnloadAsset(string assetPath)
         {
             GameFrameworkGuard.NotNull(assetPath, nameof(assetPath));

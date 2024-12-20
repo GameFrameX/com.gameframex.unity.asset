@@ -559,6 +559,15 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
+        /// 卸载资源
+        /// </summary>
+        /// <param name="assetPath">资源路径</param>
+        public void UnloadAsset(string assetPath)
+        {
+            _assetManager.UnloadAsset(assetPath);
+        }
+
+        /// <summary>
         /// 卸载无用资源
         /// </summary>
         /// <param name="packageName">资源包名称</param>
