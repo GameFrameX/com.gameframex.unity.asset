@@ -19,5 +19,6 @@
     "url": "https://gameframex.doc.alianblank.com"
   },
   "dependencies": {
+    "com.gameframex.unity": "1.1.1"
   }
 }
