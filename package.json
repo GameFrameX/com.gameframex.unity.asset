@@ -3,7 +3,7 @@
   "displayName": "Game Frame X Asset",
   "category": "Game Framework X",
   "description": "独立游戏前后端一体化解决方案,独立游戏开发者的圆梦大使。\n文档地址: https://gameframex.doc.alianblank.com \n Game Frame X Asset组件 - Unity资源管理功能包，提供资源管理功能，使资源管理功能的使用更加简单高效。",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "unity": "2019.4",
   "keywords": [
     "Game Framework X"
