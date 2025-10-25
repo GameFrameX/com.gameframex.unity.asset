@@ -1,21 +1,22 @@
 {
-    "name": "GameFrameX.Asset.Runtime",
-    "references": [
-        "BetterStreamingAssets",
-        "GameFrameX.Runtime",
-        "GameFrameX.Event.Runtime",
-        "YooAsset.Runtime",
-        "UniTask.Runtime",
-        "Wx"
-    ],
-    "rootNamespace": "GameFrameX.Asset.Runtime",
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": true,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "GameFrameX.Asset.Runtime",
+  "references": [
+    "BetterStreamingAssets",
+    "GameFrameX.Runtime",
+    "GameFrameX.Event.Runtime",
+    "YooAsset.Runtime",
+    "YooAsset",
+    "UniTask.Runtime",
+    "Wx"
+  ],
+  "rootNamespace": "GameFrameX.Asset.Runtime",
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": true,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

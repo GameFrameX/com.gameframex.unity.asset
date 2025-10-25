@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using UnityEngine;
 using YooAsset;
 
@@ -40,13 +42,14 @@ namespace GameFrameX.Asset.Runtime
             }
         }
 
+        private const string ASSET_BUNDLE_PACKAGE_ROOT_KEY = "T1_ASSET_BUNDLE_PACKAGE_ROOT_KEY";
+
         private InitializationOperation InitializeYooAssetEditorSimulateMode(ResourcePackage resourcePackage)
         {
             var initParameters = new EditorSimulateModeParameters();
-            //注意：如果是原生文件系统选择EDefaultBuildPipeline.RawFileBuildPipeline
-            var buildPipeline = EDefaultBuildPipeline.BuiltinBuildPipeline;
-            var simulateBuildResult = EditorSimulateModeHelper.SimulateBuild(buildPipeline, DefaultPackageName);
-            var editorFileSystem = FileSystemParameters.CreateDefaultEditorFileSystemParameters(simulateBuildResult);
+            var buildResult = EditorSimulateModeHelper.SimulateBuild(resourcePackage.PackageName);
+            var packageRoot = buildResult.PackageRootDirectory;
+            var editorFileSystem = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
             initParameters.EditorFileSystemParameters = editorFileSystem;
             return resourcePackage.InitializeAsync(initParameters);
         }
@@ -62,38 +65,33 @@ namespace GameFrameX.Asset.Runtime
         private InitializationOperation InitializeYooAssetWebPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             var initParameters = new WebPlayModeParameters();
-            FileSystemParameters webFileSystem = null;
-#if UNITY_WEBGL
+            FileSystemParameters webRemoteFileSystemParams = null;
+            IRemoteServices remoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
+            var webServerFileSystemParams = FileSystemParameters.CreateDefaultWebServerFileSystemParameters();
 
+
+#if UNITY_WEBGL
 #if ENABLE_DOUYIN_MINI_GAME
             // 创建字节小游戏文件系统
-            if (hostServerURL.IsNullOrWhiteSpace())
-            {
-                webFileSystem = ByteGameFileSystemCreater.CreateByteGameFileSystemParameters();
-            }
-            else
-            {
-                webFileSystem = ByteGameFileSystemCreater.CreateByteGameFileSystemParameters(hostServerURL);
-            }
+            // https: //www.yooasset.com/docs/MiniGame#%E6%8A%96%E9%9F%B3%E5%B0%8F%E6%B8%B8%E6%88%8F
+            string packageRoot = YooAssetSettingsData.GetDefaultYooFolderName();
+            webRemoteFileSystemParams = TiktokFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices);
 #elif ENABLE_WECHAT_MINI_GAME
+            //https://www.yooasset.com/docs/MiniGame#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F
             WeChatWASM.WXBase.PreloadConcurrent(10);
+            string packageRoot = $"{WeChatWASM.WXBase.env.USER_DATA_PATH}/__GAME_FILE_CACHE/{YooAssetSettingsData.GetDefaultYooFolderName()}";
             // 创建微信小游戏文件系统
-            if (hostServerURL.IsNullOrWhiteSpace())
-            {
-                webFileSystem = WechatFileSystemCreater.CreateWechatFileSystemParameters();
-            }
-            else
-            {
-                webFileSystem = WechatFileSystemCreater.CreateWechatPathFileSystemParameters(hostServerURL);
-            }
+
+            webRemoteFileSystemParams = WechatFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices, null);
 #else
             // 创建默认WebGL文件系统
-            webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
+            webRemoteFileSystemParams = FileSystemParameters.CreateDefaultWebRemoteFileSystemParameters(remoteServices); //支持跨域下载
 #endif
 #else
-            webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
+            webRemoteFileSystemParams = FileSystemParameters.CreateDefaultWebRemoteFileSystemParameters(remoteServices); //支持跨域下载
 #endif
-            initParameters.WebFileSystemParameters = webFileSystem;
+            initParameters.WebServerFileSystemParameters = webServerFileSystemParams;
+            initParameters.WebRemoteFileSystemParameters = webRemoteFileSystemParams;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
