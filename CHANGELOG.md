@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.0](https://github.com/GameFrameX/com.gameframex.unity.asset/tree/2.0.0) (2025-10-25)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.asset/compare/1.0.10...2.0.0)
+
 ## [1.0.10](https://github.com/GameFrameX/com.gameframex.unity.asset/tree/1.0.10) (2025-06-01)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.asset/compare/1.0.9...1.0.10)
