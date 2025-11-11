@@ -568,6 +568,18 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
+        /// 卸载资源
+        /// </summary>
+        /// <param name="assetHandle">资源句柄</param>
+        public void UnloadAssetHandle(object assetHandle)
+        {
+            if (assetHandle is AssetHandle handle)
+            {
+                handle.Release();
+            }
+        }
+
+        /// <summary>
         /// 卸载无用资源
         /// </summary>
         /// <param name="packageName">资源包名称</param>
