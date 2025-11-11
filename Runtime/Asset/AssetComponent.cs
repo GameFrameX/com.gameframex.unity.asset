@@ -14,7 +14,7 @@ namespace GameFrameX.Asset.Runtime
     /// 资源组件。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("Game Framework/Asset")]
+    [AddComponentMenu("GameFrameX/Asset")]
     [UnityEngine.Scripting.Preserve]
     public sealed class AssetComponent : GameFrameworkComponent
     {
