@@ -51,6 +51,7 @@ namespace GameFrameX.Asset.Runtime
             var packageRoot = buildResult.PackageRootDirectory;
             var editorFileSystem = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
             initParameters.EditorFileSystemParameters = editorFileSystem;
+            initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
@@ -59,6 +60,7 @@ namespace GameFrameX.Asset.Runtime
             var buildinFileSystem = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
             var initParameters = new OfflinePlayModeParameters();
             initParameters.BuildinFileSystemParameters = buildinFileSystem;
+            initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
@@ -92,6 +94,7 @@ namespace GameFrameX.Asset.Runtime
 #endif
             initParameters.WebServerFileSystemParameters = webServerFileSystemParams;
             initParameters.WebRemoteFileSystemParameters = webRemoteFileSystemParams;
+            initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
@@ -103,6 +106,7 @@ namespace GameFrameX.Asset.Runtime
             var initParameters = new HostPlayModeParameters();
             initParameters.BuildinFileSystemParameters = buildinFileSystem;
             initParameters.CacheFileSystemParameters = cacheFileSystem;
+            initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
     }
