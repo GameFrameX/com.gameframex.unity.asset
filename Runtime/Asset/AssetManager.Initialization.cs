@@ -70,7 +70,7 @@ namespace GameFrameX.Asset.Runtime
             FileSystemParameters webRemoteFileSystemParams = null;
             IRemoteServices remoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
             var webServerFileSystemParams = FileSystemParameters.CreateDefaultWebServerFileSystemParameters();
-
+            webServerFileSystemParams.AddParameter(FileSystemParametersDefine.DISABLE_CATALOG_FILE, true);
 
 #if UNITY_WEBGL
 #if ENABLE_DOUYIN_MINI_GAME
@@ -85,6 +85,7 @@ namespace GameFrameX.Asset.Runtime
             // 创建微信小游戏文件系统
 
             webRemoteFileSystemParams = WechatFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices, null);
+            webRemoteFileSystemParams.AddParameter(FileSystemParametersDefine.DISABLE_CATALOG_FILE, true);
 #else
             // 创建默认WebGL文件系统
             webRemoteFileSystemParams = FileSystemParameters.CreateDefaultWebRemoteFileSystemParameters(remoteServices); //支持跨域下载
