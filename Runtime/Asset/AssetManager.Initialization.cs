@@ -69,8 +69,8 @@ namespace GameFrameX.Asset.Runtime
             var initParameters = new WebPlayModeParameters();
             FileSystemParameters webRemoteFileSystemParams = null;
             IRemoteServices remoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);
-            var webServerFileSystemParams = FileSystemParameters.CreateDefaultWebServerFileSystemParameters();
-            webServerFileSystemParams.AddParameter(FileSystemParametersDefine.DISABLE_CATALOG_FILE, true);
+            // var webServerFileSystemParams = FileSystemParameters.CreateDefaultWebServerFileSystemParameters();
+            // webServerFileSystemParams.AddParameter(FileSystemParametersDefine.DISABLE_CATALOG_FILE, true);
 
 #if UNITY_WEBGL
 #if ENABLE_DOUYIN_MINI_GAME
@@ -93,7 +93,7 @@ namespace GameFrameX.Asset.Runtime
 #else
             webRemoteFileSystemParams = FileSystemParameters.CreateDefaultWebRemoteFileSystemParameters(remoteServices); //支持跨域下载
 #endif
-            initParameters.WebServerFileSystemParameters = webServerFileSystemParams;
+            initParameters.WebServerFileSystemParameters = null;
             initParameters.WebRemoteFileSystemParameters = webRemoteFileSystemParams;
             initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
