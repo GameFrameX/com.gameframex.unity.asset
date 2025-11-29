@@ -3,6 +3,7 @@
     /// <summary>
     /// 资源相关常量。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     internal static class Constant
     {
         /// <summary>

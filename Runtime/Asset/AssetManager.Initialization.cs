@@ -11,6 +11,7 @@ namespace GameFrameX.Asset.Runtime
         /// 根据运行模式创建初始化操作数据
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         private InitializationOperation CreateInitializationOperationHandler(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             switch (PlayMode)
@@ -44,6 +45,7 @@ namespace GameFrameX.Asset.Runtime
 
         private const string ASSET_BUNDLE_PACKAGE_ROOT_KEY = "T1_ASSET_BUNDLE_PACKAGE_ROOT_KEY";
 
+        [UnityEngine.Scripting.Preserve]
         private InitializationOperation InitializeYooAssetEditorSimulateMode(ResourcePackage resourcePackage)
         {
             var initParameters = new EditorSimulateModeParameters();
@@ -55,6 +57,7 @@ namespace GameFrameX.Asset.Runtime
             return resourcePackage.InitializeAsync(initParameters);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private InitializationOperation InitializeYooAssetOfflinePlayMode(ResourcePackage resourcePackage)
         {
             var buildinFileSystem = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
@@ -64,6 +67,7 @@ namespace GameFrameX.Asset.Runtime
             return resourcePackage.InitializeAsync(initParameters);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private InitializationOperation InitializeYooAssetWebPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             var initParameters = new WebPlayModeParameters();
@@ -99,6 +103,7 @@ namespace GameFrameX.Asset.Runtime
             return resourcePackage.InitializeAsync(initParameters);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private InitializationOperation InitializeYooAssetHostPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             IRemoteServices remoteServices = new RemoteServices(hostServerURL, fallbackHostServerURL);

@@ -24,6 +24,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 资源的运行模式
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public EPlayMode GamePlayMode
         {
             get { return m_GamePlayMode; }
@@ -38,6 +39,7 @@ namespace GameFrameX.Asset.Runtime
 
         private IAssetManager _assetManager;
 
+        [UnityEngine.Scripting.Preserve]
         protected override void Awake()
         {
 #if !UNITY_EDITOR
@@ -62,6 +64,7 @@ namespace GameFrameX.Asset.Runtime
             _assetManager.SetPlayMode(GamePlayMode);
         }
 
+        [UnityEngine.Scripting.Preserve]
         private void Start()
         {
             _assetManager.Initialize();
@@ -74,6 +77,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="host">主下载地址</param>
         /// <param name="fallbackHostServer">备用下载地址</param>
         /// <param name="isDefaultPackage">是否是默认包</param>
+        [UnityEngine.Scripting.Preserve]
         public async Task<bool> InitPackageAsync(string packageName, string host, string fallbackHostServer, bool isDefaultPackage = false)
         {
 #if UNITY_EDITOR
@@ -98,6 +102,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<SubAssetsHandle> LoadSubAssetsAsync(AssetInfo assetInfo)
         {
             return _assetManager.LoadSubAssetsAsync(assetInfo);
@@ -109,6 +114,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<SubAssetsHandle> LoadSubAssetsAsync(string path, Type type)
         {
             return _assetManager.LoadSubAssetsAsync(path, type);
@@ -119,6 +125,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object
         {
             return _assetManager.LoadSubAssetsAsync<T>(path);
@@ -133,6 +140,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetSync(AssetInfo assetInfo)
         {
             return _assetManager.LoadSubAssetSync(assetInfo);
@@ -144,6 +152,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetSync(string path, Type type)
         {
             return _assetManager.LoadSubAssetSync(path, type);
@@ -154,6 +163,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetSync<T>(string path) where T : Object
         {
             return _assetManager.LoadSubAssetSync<T>(path);
@@ -168,6 +178,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<RawFileHandle> LoadRawFileAsync(AssetInfo assetInfo)
         {
             return _assetManager.LoadRawFileAsync(assetInfo);
@@ -178,6 +189,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<RawFileHandle> LoadRawFileAsync(string path)
         {
             return _assetManager.LoadRawFileAsync(path);
@@ -192,6 +204,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public RawFileHandle LoadRawFileSync(AssetInfo assetInfo)
         {
             return _assetManager.LoadRawFileSync(assetInfo);
@@ -202,6 +215,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public RawFileHandle LoadRawFileSync(string path)
         {
             return _assetManager.LoadRawFileSync(path);
@@ -217,6 +231,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AssetHandle> LoadAssetAsync(AssetInfo assetInfo)
         {
             return _assetManager.LoadAssetAsync(assetInfo);
@@ -228,6 +243,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type">资源类型</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AssetHandle> LoadAssetAsync(string path, Type type)
         {
             return _assetManager.LoadAssetAsync(path, type);
@@ -239,6 +255,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AssetHandle> LoadAssetAsync<T>(string path) where T : Object
         {
             return _assetManager.LoadAssetAsync<T>(path);
@@ -250,6 +267,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object
         {
             return _assetManager.LoadAllAssetsAsync<T>(path);
@@ -261,6 +279,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type">资源类型</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type)
         {
             return _assetManager.LoadAllAssetsAsync(path, type);
@@ -270,6 +289,7 @@ namespace GameFrameX.Asset.Runtime
         /// 异步加载资源包内所有资源对象
         /// </summary>
         /// <param name="path">资源的定位地址</param>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path)
         {
             return _assetManager.LoadAllAssetsAsync(path);
@@ -279,6 +299,7 @@ namespace GameFrameX.Asset.Runtime
         /// 异步加载资源包内所有资源对象
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo)
         {
             return _assetManager.LoadAllAssetsAsync(assetInfo);
@@ -289,6 +310,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<AssetHandle> LoadAssetAsync(string path)
         {
             return _assetManager.LoadAssetAsync(path);
@@ -298,6 +320,7 @@ namespace GameFrameX.Asset.Runtime
         /// 异步加载子资源对象
         /// </summary>
         /// <param name="path">资源的定位地址</param>
+        [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetsAsync(string path)
         {
             return _assetManager.LoadSubAssetsAsync(path);
@@ -311,6 +334,7 @@ namespace GameFrameX.Asset.Runtime
         /// 同步加载资源包内所有资源对象
         /// </summary>
         /// <param name="path">资源的定位地址</param>
+        [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync(string path)
         {
             return _assetManager.LoadAllAssetsSync(path);
@@ -321,6 +345,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <typeparam name="T">资源类型</typeparam>
         /// <param name="path">资源的定位地址</param>
+        [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : Object
         {
             return _assetManager.LoadAllAssetsSync<T>(path);
@@ -331,6 +356,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源的定位地址</param>
         /// <param name="type">子对象类型</param>
+        [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync(string path, Type type)
         {
             return _assetManager.LoadAllAssetsSync(path, type);
@@ -341,6 +367,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync(AssetInfo assetInfo)
         {
             return _assetManager.LoadAllAssetsSync(assetInfo);
@@ -351,6 +378,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetsSync(string path)
         {
             return _assetManager.LoadSubAssetSync(path);
@@ -361,6 +389,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetsSync(string path)
         {
             return _assetManager.LoadAssetSync(path);
@@ -372,6 +401,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <param name="type"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetSync(string path, Type type)
         {
             return _assetManager.LoadAssetSync(path, type);
@@ -382,6 +412,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetSync(AssetInfo assetInfo)
         {
             return _assetManager.LoadAssetSync(assetInfo);
@@ -392,6 +423,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源路径</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetSync<T>(string path) where T : Object
         {
             return _assetManager.LoadAssetSync<T>(path);
@@ -408,6 +440,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="sceneMode">场景模式</param>
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             return _assetManager.LoadSceneAsync(path, sceneMode, activateOnLoad);
@@ -420,6 +453,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="sceneMode">场景模式</param>
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public UniTask<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             return _assetManager.LoadSceneAsync(assetInfo, sceneMode, activateOnLoad);
@@ -434,6 +468,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public ResourcePackage CreateAssetsPackage(string packageName)
         {
             return _assetManager.CreateAssetsPackage(packageName);
@@ -444,6 +479,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public ResourcePackage TryGetAssetsPackage(string packageName)
         {
             return _assetManager.TryGetAssetsPackage(packageName);
@@ -454,6 +490,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasAssetsPackage(string packageName)
         {
             return _assetManager.HasAssetsPackage(packageName);
@@ -464,6 +501,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public ResourcePackage GetAssetsPackage(string packageName)
         {
             return _assetManager.GetAssetsPackage(packageName);
@@ -476,6 +514,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsNeedDownload(AssetInfo assetInfo)
         {
             return _assetManager.IsNeedDownload(assetInfo);
@@ -486,6 +525,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源地址</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public bool IsNeedDownload(string path)
         {
             return _assetManager.IsNeedDownload(path);
@@ -496,6 +536,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetTags">资源标签列表</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AssetInfo[] GetAssetInfos(string[] assetTags)
         {
             return _assetManager.GetAssetInfos(assetTags);
@@ -506,6 +547,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetTag">资源标签</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public AssetInfo[] GetAssetInfos(string assetTag)
         {
             return _assetManager.GetAssetInfos(assetTag);
@@ -514,6 +556,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 获取资源信息
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public AssetInfo GetAssetInfo(string path)
         {
             return _assetManager.GetAssetInfo(path);
@@ -524,6 +567,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetPath">要检查的资源路径。</param>
         /// <returns>如果存在指定的资源路径，则返回 true；否则返回 false。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool HasAssetPath(string assetPath)
         {
             return _assetManager.HasAssetPath(assetPath);
@@ -534,6 +578,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetsPackage">资源信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public void SetDefaultAssetsPackage(ResourcePackage assetsPackage)
         {
             _assetManager.SetDefaultAssetsPackage(assetsPackage);
@@ -543,6 +588,7 @@ namespace GameFrameX.Asset.Runtime
         /// 强制回收所有资源
         /// </summary>
         /// <param name="packageName">资源包名称</param>
+        [UnityEngine.Scripting.Preserve]
         public void UnloadAllAssetsAsync(string packageName)
         {
             _assetManager.UnloadAllAssetsAsync(packageName);
@@ -553,6 +599,7 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         /// <param name="assetPath">资源路径</param>
+        [UnityEngine.Scripting.Preserve]
         public void UnloadAsset(string packageName, string assetPath)
         {
             _assetManager.UnloadAsset(packageName, assetPath);
@@ -562,6 +609,7 @@ namespace GameFrameX.Asset.Runtime
         /// 卸载资源
         /// </summary>
         /// <param name="assetPath">资源路径</param>
+        [UnityEngine.Scripting.Preserve]
         public void UnloadAsset(string assetPath)
         {
             _assetManager.UnloadAsset(assetPath);
@@ -571,6 +619,7 @@ namespace GameFrameX.Asset.Runtime
         /// 卸载资源
         /// </summary>
         /// <param name="assetHandle">资源句柄</param>
+        [UnityEngine.Scripting.Preserve]
         public void UnloadAssetHandle(object assetHandle)
         {
             if (assetHandle is AssetHandle handle)
@@ -583,6 +632,7 @@ namespace GameFrameX.Asset.Runtime
         /// 卸载无用资源
         /// </summary>
         /// <param name="packageName">资源包名称</param>
+        [UnityEngine.Scripting.Preserve]
         public void UnloadUnusedAssetsAsync(string packageName)
         {
             _assetManager.UnloadUnusedAssetsAsync(packageName);
@@ -592,6 +642,7 @@ namespace GameFrameX.Asset.Runtime
         /// 清理所有资源
         /// </summary>
         /// <param name="packageName">资源包名称</param>
+        [UnityEngine.Scripting.Preserve]
         public void ClearAllBundleFilesAsync(string packageName)
         {
             _assetManager.ClearAllBundleFilesAsync(packageName);
@@ -601,6 +652,7 @@ namespace GameFrameX.Asset.Runtime
         /// 清理无用资源
         /// </summary>
         /// <param name="packageName">资源包名称</param>
+        [UnityEngine.Scripting.Preserve]
         public void ClearUnusedBundleFilesAsync(string packageName)
         {
             _assetManager.ClearUnusedBundleFilesAsync(packageName);
