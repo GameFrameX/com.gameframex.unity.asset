@@ -84,7 +84,7 @@ namespace GameFrameX.Asset.Runtime
             string packageRoot = $"{WeChatWASM.WXBase.env.USER_DATA_PATH}/__GAME_FILE_CACHE/{YooAssetSettingsData.GetDefaultYooFolderName()}";
             // 创建微信小游戏文件系统
 
-            webRemoteFileSystemParams = WechatFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices, null);
+            webRemoteFileSystemParams = WechatFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices);
             webRemoteFileSystemParams.AddParameter(FileSystemParametersDefine.DISABLE_CATALOG_FILE, true);
 #else
             // 创建默认WebGL文件系统
