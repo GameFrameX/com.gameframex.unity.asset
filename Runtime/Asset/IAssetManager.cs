@@ -1,5 +1,5 @@
 using System;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using YooAsset;
 using Object = UnityEngine.Object;
@@ -97,7 +97,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="isDefaultPackage">是否是默认包，默认是</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<bool> InitPackageAsync(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = true);
+        Task<bool> InitPackageAsync(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = true);
 
         /// <summary>
         /// 卸载资源
@@ -114,7 +114,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<SubAssetsHandle> LoadSubAssetsAsync(AssetInfo assetInfo);
+        Task<SubAssetsHandle> LoadSubAssetsAsync(AssetInfo assetInfo);
 
         /// <summary>
         /// 异步加载子资源对象
@@ -123,7 +123,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="type"></param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<SubAssetsHandle> LoadSubAssetsAsync(string path, Type type);
+        Task<SubAssetsHandle> LoadSubAssetsAsync(string path, Type type);
 
         /// <summary>
         /// 异步加载子资源对象
@@ -131,7 +131,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object;
+        Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object;
 
         #endregion
 
@@ -172,7 +172,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<RawFileHandle> LoadRawFileAsync(AssetInfo assetInfo);
+        Task<RawFileHandle> LoadRawFileAsync(AssetInfo assetInfo);
 
         /// <summary>
         /// 异步加载原生文件
@@ -180,7 +180,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<RawFileHandle> LoadRawFileAsync(string path);
+        Task<RawFileHandle> LoadRawFileAsync(string path);
 
         #endregion
 
@@ -213,7 +213,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AssetHandle> LoadAssetAsync(AssetInfo assetInfo);
+        Task<AssetHandle> LoadAssetAsync(AssetInfo assetInfo);
 
         /// <summary>
         /// 异步加载资源
@@ -222,7 +222,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="type">资源类型</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AssetHandle> LoadAssetAsync(string path, Type type);
+        Task<AssetHandle> LoadAssetAsync(string path, Type type);
 
         /// <summary>
         /// 异步加载资源
@@ -231,7 +231,7 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AssetHandle> LoadAssetAsync<T>(string path) where T : Object;
+        Task<AssetHandle> LoadAssetAsync<T>(string path) where T : Object;
 
         /// <summary>
         /// 异步加载全部资源
@@ -239,7 +239,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object;
+        Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object;
 
         /// <summary>
         /// 异步加载全部资源
@@ -248,7 +248,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="type">资源类型</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type);
+        Task<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type);
 
         /*/// <summary>
         /// 异步加载资源。
@@ -264,14 +264,14 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源的定位地址</param>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path);
+        Task<AllAssetsHandle> LoadAllAssetsAsync(string path);
 
         /// <summary>
         /// 异步加载资源包内所有资源对象
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo);
+        Task<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo);
 
         /// <summary>
         /// 异步加载资源
@@ -279,7 +279,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<AssetHandle> LoadAssetAsync(string path);
+        Task<AssetHandle> LoadAssetAsync(string path);
 
         /// <summary>
         /// 异步加载子资源对象
@@ -376,7 +376,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true);
+        Task<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true);
 
         /// <summary>
         /// 异步加载场景
@@ -386,7 +386,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        UniTask<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true);
+        Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true);
 
         #endregion
 

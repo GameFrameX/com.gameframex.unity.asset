@@ -6,7 +6,6 @@
     "GameFrameX.Event.Runtime",
     "YooAsset.Runtime",
     "YooAsset",
-    "UniTask.Runtime",
     "Wx"
   ],
   "rootNamespace": "GameFrameX.Asset.Runtime",

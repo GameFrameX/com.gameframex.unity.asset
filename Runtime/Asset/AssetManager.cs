@@ -1,5 +1,5 @@
 using System;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using GameFrameX.Runtime;
 using UnityEngine.SceneManagement;
 using YooAsset;
@@ -50,9 +50,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="isDefaultPackage">是否是默认包</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<bool> InitPackageAsync(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false)
+        public Task<bool> InitPackageAsync(string packageName, string hostServerURL, string fallbackHostServerURL, bool isDefaultPackage = false)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<bool>();
+            var taskCompletionSource = new TaskCompletionSource<bool>();
             GameFrameworkGuard.NotNull(packageName, nameof(packageName));
             GameFrameworkGuard.NotNull(hostServerURL, nameof(hostServerURL));
             GameFrameworkGuard.NotNull(fallbackHostServerURL, nameof(fallbackHostServerURL));
@@ -168,9 +168,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<SubAssetsHandle> LoadSubAssetsAsync(AssetInfo assetInfo)
+        public Task<SubAssetsHandle> LoadSubAssetsAsync(AssetInfo assetInfo)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SubAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<SubAssetsHandle>();
             var assetHandle = YooAssets.LoadSubAssetsAsync(assetInfo);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -183,9 +183,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="type"></param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<SubAssetsHandle> LoadSubAssetsAsync(string path, Type type)
+        public Task<SubAssetsHandle> LoadSubAssetsAsync(string path, Type type)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SubAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<SubAssetsHandle>();
             var assetHandle = YooAssets.LoadSubAssetsAsync(path, type);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -197,9 +197,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object
+        public Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SubAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<SubAssetsHandle>();
             var assetHandle = YooAssets.LoadSubAssetsAsync<T>(path);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -253,9 +253,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<RawFileHandle> LoadRawFileAsync(AssetInfo assetInfo)
+        public Task<RawFileHandle> LoadRawFileAsync(AssetInfo assetInfo)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<RawFileHandle>();
+            var taskCompletionSource = new TaskCompletionSource<RawFileHandle>();
             var assetHandle = YooAssets.LoadRawFileAsync(assetInfo);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -267,9 +267,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<RawFileHandle> LoadRawFileAsync(string path)
+        public Task<RawFileHandle> LoadRawFileAsync(string path)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<RawFileHandle>();
+            var taskCompletionSource = new TaskCompletionSource<RawFileHandle>();
             var assetHandle = YooAssets.LoadRawFileAsync(path);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -312,9 +312,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="assetInfo">资源信息</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AssetHandle> LoadAssetAsync(AssetInfo assetInfo)
+        public Task<AssetHandle> LoadAssetAsync(AssetInfo assetInfo)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AssetHandle>();
             var assetHandle = YooAssets.LoadAssetAsync(assetInfo);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -327,9 +327,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="type">资源类型</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AssetHandle> LoadAssetAsync(string path, Type type)
+        public Task<AssetHandle> LoadAssetAsync(string path, Type type)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AssetHandle>();
             var assetHandle = YooAssets.LoadAssetAsync(path, type);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -341,9 +341,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object
+        public Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AllAssetsHandle>();
             var assetHandle = YooAssets.LoadAllAssetsAsync<T>(path);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -356,9 +356,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="type">资源类型</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type)
+        public Task<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AllAssetsHandle>();
             var assetHandle = YooAssets.LoadAllAssetsAsync(path, type);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -369,9 +369,9 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="path">资源的定位地址</param>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(string path)
+        public Task<AllAssetsHandle> LoadAllAssetsAsync(string path)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AllAssetsHandle>();
             var assetHandle = YooAssets.LoadAllAssetsAsync(path);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -382,9 +382,9 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="assetInfo">资源信息</param>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo)
+        public Task<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AllAssetsHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AllAssetsHandle>();
             var assetHandle = YooAssets.LoadAllAssetsAsync(assetInfo);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -407,9 +407,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AssetHandle> LoadAssetAsync(string path)
+        public Task<AssetHandle> LoadAssetAsync(string path)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AssetHandle>();
             var assetHandle = YooAssets.LoadAssetAsync(path);
             assetHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -422,9 +422,9 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<AssetHandle> LoadAssetAsync<T>(string path) where T : Object
+        public Task<AssetHandle> LoadAssetAsync<T>(string path) where T : Object
         {
-            var taskCompletionSource = new UniTaskCompletionSource<AssetHandle>();
+            var taskCompletionSource = new TaskCompletionSource<AssetHandle>();
             var assetHandle = YooAssets.LoadAssetAsync<T>(path);
 
             void OnAssetHandleOnCompleted(AssetHandle handle)
@@ -573,9 +573,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true)
+        public Task<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SceneHandle>();
+            var taskCompletionSource = new TaskCompletionSource<SceneHandle>();
             var sceneHandle = YooAssets.LoadSceneAsync(path, sceneMode, LocalPhysicsMode.None, !activateOnLoad);
             sceneHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
@@ -589,9 +589,9 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public UniTask<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true)
+        public Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
-            var taskCompletionSource = new UniTaskCompletionSource<SceneHandle>();
+            var taskCompletionSource = new TaskCompletionSource<SceneHandle>();
             var sceneHandle = YooAssets.LoadSceneAsync(assetInfo, sceneMode, LocalPhysicsMode.None, !activateOnLoad);
             sceneHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
