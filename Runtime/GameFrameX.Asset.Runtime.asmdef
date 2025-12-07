@@ -6,7 +6,8 @@
     "GameFrameX.Event.Runtime",
     "YooAsset.Runtime",
     "YooAsset",
-    "Wx"
+    "Wx",
+    "YooAsset.MiniGame"
   ],
   "rootNamespace": "GameFrameX.Asset.Runtime",
   "includePlatforms": [],
@@ -16,6 +17,11 @@
   "precompiledReferences": [],
   "autoReferenced": true,
   "defineConstraints": [],
-  "versionDefines": [],
+  "versionDefines": [
+    {
+      "name": "com.tuyoogame.yooasset.minigame",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_YOO_ASSET_MINI_GAME"
+    }],
   "noEngineReferences": false
 }
