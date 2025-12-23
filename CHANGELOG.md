@@ -1,3 +1,18 @@
+# [2.1.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.0.0...2.1.0) (2025-12-23)
+
+
+### Bug Fixes
+
+* **AssetManager:** 禁用WebGL和微信小游戏的catalog文件 ([ca1ba5f](https://github.com/gameframex/com.gameframex.unity.asset/commit/ca1ba5ff77bf8952d48e2da84fe24fdbae3a12ed))
+* **AssetManager:** 移除微信小游戏文件系统创建中的多余参数 ([cfd088a](https://github.com/gameframex/com.gameframex.unity.asset/commit/cfd088ab2f895c19397b8bbf6401d3005be8b00a))
+
+
+### Features
+
+* **AssetManager:** 添加自动卸载未使用资源包的功能 ([6f96ac4](https://github.com/gameframex/com.gameframex.unity.asset/commit/6f96ac42ab60788cd05d28d3b7367c563ff08b1e))
+* **Asset:** 添加对YooAsset.MiniGame的支持并增加微信小游戏配置 ([28f917a](https://github.com/gameframex/com.gameframex.unity.asset/commit/28f917ac5d248ac0172118c8a82eade98e233e87))
+* **Asset:** 添加通过资源句柄卸载资源的方法 ([a249afb](https://github.com/gameframex/com.gameframex.unity.asset/commit/a249afb89874c750639857d88d4819dacedf5e94))
+
 # Changelog
 
 ## [2.0.0](https://github.com/GameFrameX/com.gameframex.unity.asset/tree/2.0.0) (2025-10-25)
