@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.1.1...2.1.2) (2026-03-05)
+
+
+### Bug Fixes
+
+* **AssetManager:** 修复清理未使用资源包的方法调用 ([23e41a2](https://github.com/gameframex/com.gameframex.unity.asset/commit/23e41a29c6c7ee20435bd19b3ac176497b9d1125))
+
 ## [2.1.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.1.0...2.1.1) (2026-03-05)
 
 
