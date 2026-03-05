@@ -144,7 +144,7 @@ namespace GameFrameX.Asset.Runtime
         {
             GameFrameworkGuard.NotNull(packageName, nameof(packageName));
             var package = YooAssets.GetPackage(packageName);
-            package.ClearCacheFilesAsync(EFileClearMode.ClearAllBundleFiles);
+            package.ClearUnusedBundleFilesAsync();
         }
 
         /// <summary>
