@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.1.0...2.1.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* **AssetManager:** 修复抖音小游戏平台文件系统创建调用路径 ([3c8650a](https://github.com/gameframex/com.gameframex.unity.asset/commit/3c8650a4c1dd5e7f290ead633ecf15d16b1e0c6a))
+
 # [2.1.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.0.0...2.1.0) (2025-12-23)
 
 
