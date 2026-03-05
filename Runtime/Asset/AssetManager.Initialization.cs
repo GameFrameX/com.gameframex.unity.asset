@@ -82,7 +82,7 @@ namespace GameFrameX.Asset.Runtime
             // 创建字节小游戏文件系统
             // https: //www.yooasset.com/docs/MiniGame#%E6%8A%96%E9%9F%B3%E5%B0%8F%E6%B8%B8%E6%88%8F
             string packageRoot = YooAssetSettingsData.GetDefaultYooFolderName();
-            webRemoteFileSystemParams = TiktokFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices);
+            webRemoteFileSystemParams = GameFrameX.Asset.YooAsset.Minigame.TikTok.Runtime.TiktokFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices);
 #elif ENABLE_WECHAT_MINI_GAME
             //https://www.yooasset.com/docs/MiniGame#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F
             WeChatWASM.WXBase.PreloadConcurrent(10);
