@@ -50,11 +50,10 @@ namespace GameFrameX.Asset.Runtime
         private InitializationOperation InitializeYooAssetEditorSimulateMode(ResourcePackage resourcePackage)
         {
             var initParameters = new EditorSimulateModeParameters();
-            var buildResult = EditorSimulateModeHelper.SimulateBuild(resourcePackage.PackageName);
+            var buildResult = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline, resourcePackage.PackageName);
             var packageRoot = buildResult.PackageRootDirectory;
-            var editorFileSystem = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
+            var editorFileSystem = FileSystemParameters.CreateDefaultEditorFileSystemParameters(buildResult);
             initParameters.EditorFileSystemParameters = editorFileSystem;
-            initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
@@ -64,7 +63,6 @@ namespace GameFrameX.Asset.Runtime
             var buildinFileSystem = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
             var initParameters = new OfflinePlayModeParameters();
             initParameters.BuildinFileSystemParameters = buildinFileSystem;
-            initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
@@ -81,8 +79,8 @@ namespace GameFrameX.Asset.Runtime
 #if ENABLE_DOUYIN_MINI_GAME
             // 创建字节小游戏文件系统
             // https: //www.yooasset.com/docs/MiniGame#%E6%8A%96%E9%9F%B3%E5%B0%8F%E6%B8%B8%E6%88%8F
-            string packageRoot = YooAssetSettingsData.GetDefaultYooFolderName();
-            webRemoteFileSystemParams = GameFrameX.Asset.YooAsset.Minigame.TikTok.Runtime.TiktokFileSystemCreater.CreateFileSystemParameters(packageRoot, remoteServices);
+            string packageRoot = YooAssetSettingsData.Setting.DefaultYooFolderName;
+            webRemoteFileSystemParams = GameFrameX.Asset.YooAsset.Minigame.TikTok.Runtime.ByteGameFileSystemCreater.CreateByteGameFileSystemParameters(packageRoot);
 #elif ENABLE_WECHAT_MINI_GAME
             //https://www.yooasset.com/docs/MiniGame#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F
             WeChatWASM.WXBase.PreloadConcurrent(10);
@@ -102,9 +100,9 @@ namespace GameFrameX.Asset.Runtime
 #else
             webRemoteFileSystemParams = FileSystemParameters.CreateDefaultWebRemoteFileSystemParameters(remoteServices); //支持跨域下载
 #endif
-            initParameters.WebServerFileSystemParameters = null;
-            initParameters.WebRemoteFileSystemParameters = webRemoteFileSystemParams;
-            initParameters.AutoUnloadBundleWhenUnused = true;
+            // initParameters.WebServerFileSystemParameters = null;
+            initParameters.WebFileSystemParameters = webRemoteFileSystemParams;
+            // initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
 
@@ -117,7 +115,7 @@ namespace GameFrameX.Asset.Runtime
             var initParameters = new HostPlayModeParameters();
             initParameters.BuildinFileSystemParameters = buildinFileSystem;
             initParameters.CacheFileSystemParameters = cacheFileSystem;
-            initParameters.AutoUnloadBundleWhenUnused = true;
+            // initParameters.AutoUnloadBundleWhenUnused = true;
             return resourcePackage.InitializeAsync(initParameters);
         }
     }
