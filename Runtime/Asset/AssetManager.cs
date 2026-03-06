@@ -13,14 +13,29 @@ namespace GameFrameX.Asset.Runtime
     [UnityEngine.Scripting.Preserve]
     public partial class AssetManager : GameFrameworkModule, IAssetManager
     {
-        public string DefaultPackageName { get; set; } = "DefaultPackage";
+        /// <summary>
+        /// 默认包名称
+        /// </summary>
+        public string DefaultPackageName { get; set; } = ConstDefaultPackageName;
 
-
+        /// <summary>
+        /// 最大并发下载数量
+        /// </summary>
         public int DownloadingMaxNum { get; set; }
+
+        /// <summary>
+        /// 失败重试次数
+        /// </summary>
         public int FailedTryAgain { get; set; }
 
-
+        /// <summary>
+        /// 文件验证等级
+        /// </summary>
         public EFileVerifyLevel VerifyLevel { get; set; }
+
+        /// <summary>
+        /// 操作系统最大时间片（单位：毫秒）
+        /// </summary>
         public long Milliseconds { get; set; }
 
         /// <summary>
@@ -116,11 +131,18 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         [UnityEngine.Scripting.Preserve]
-        public void UnloadAllAssetsAsync(string packageName)
+        public void UnloadAllAssetsAsync(string packageName = null)
         {
-            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            if (string.IsNullOrWhiteSpace(packageName))
+            {
+                packageName = ConstDefaultPackageName;
+            }
+
             var package = YooAssets.GetPackage(packageName);
-            package.UnloadAllAssetsAsync();
+            if (package != null)
+            {
+                package.UnloadAllAssetsAsync();
+            }
         }
 
         /// <summary>
@@ -128,11 +150,18 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         [UnityEngine.Scripting.Preserve]
-        public void UnloadUnusedAssetsAsync(string packageName)
+        public void UnloadUnusedAssetsAsync(string packageName = null)
         {
-            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            if (string.IsNullOrWhiteSpace(packageName))
+            {
+                packageName = ConstDefaultPackageName;
+            }
+
             var package = YooAssets.GetPackage(packageName);
-            package.UnloadUnusedAssetsAsync();
+            if (package != null)
+            {
+                package.UnloadUnusedAssetsAsync();
+            }
         }
 
         /// <summary>
@@ -140,11 +169,18 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         [UnityEngine.Scripting.Preserve]
-        public void ClearAllBundleFilesAsync(string packageName)
+        public void ClearAllBundleFilesAsync(string packageName = null)
         {
-            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            if (string.IsNullOrWhiteSpace(packageName))
+            {
+                packageName = ConstDefaultPackageName;
+            }
+
             var package = YooAssets.GetPackage(packageName);
-            package.ClearUnusedBundleFilesAsync();
+            if (package != null)
+            {
+                package.ClearUnusedBundleFilesAsync();
+            }
         }
 
         /// <summary>
@@ -152,11 +188,19 @@ namespace GameFrameX.Asset.Runtime
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         [UnityEngine.Scripting.Preserve]
-        public void ClearUnusedBundleFilesAsync(string packageName)
+        public void ClearUnusedBundleFilesAsync(string packageName = null)
         {
-            GameFrameworkGuard.NotNull(packageName, nameof(packageName));
+            if (string.IsNullOrWhiteSpace(packageName))
+            {
+                packageName = ConstDefaultPackageName;
+            }
+
             var package = YooAssets.GetPackage(packageName);
-            package.UnloadUnusedAssetsAsync();
+
+            if (package != null)
+            {
+                package.UnloadUnusedAssetsAsync();
+            }
         }
 
 
