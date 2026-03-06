@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.1.2...2.2.0) (2026-03-06)
+
+
+### Features
+
+* **Asset:** 为清理资源方法添加默认包名参数 ([29983d5](https://github.com/gameframex/com.gameframex.unity.asset/commit/29983d5922a89c2a51e779adeaa0301accbd8a4c))
+* **Asset:** 为资源清理方法添加可选参数默认值 ([7fd31d5](https://github.com/gameframex/com.gameframex.unity.asset/commit/7fd31d59f6d2091a81ea2484b990be08728d3800))
+* **Asset:** 为远程资源URL生成添加包版本支持 ([f3d6121](https://github.com/gameframex/com.gameframex.unity.asset/commit/f3d612178f08f8b39a5b62e80bf6e0f0fdbe4be3))
+
 ## [2.1.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.1.1...2.1.2) (2026-03-05)
 
 
