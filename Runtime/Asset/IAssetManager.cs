@@ -483,30 +483,30 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 清理无用资源
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
+        /// <param name="packageName">资源包名称,当packageName为 null 时,清理[默认]资源包</param>
         [UnityEngine.Scripting.Preserve]
-        void ClearUnusedBundleFilesAsync(string packageName);
+        void ClearUnusedBundleFilesAsync(string packageName = null);
 
         /// <summary>
         /// 清理所有资源
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
+        /// <param name="packageName">资源包名称,当packageName为 null 时,清理[默认]资源包</param>
         [UnityEngine.Scripting.Preserve]
-        void ClearAllBundleFilesAsync(string packageName);
+        void ClearAllBundleFilesAsync(string packageName = null);
 
         /// <summary>
         /// 卸载无用资源
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
+        /// <param name="packageName">资源包名称,当packageName为 null 时,卸载[默认]资源包</param>
         [UnityEngine.Scripting.Preserve]
-        void UnloadUnusedAssetsAsync(string packageName);
+        void UnloadUnusedAssetsAsync(string packageName = null);
 
         /// <summary>
         /// 强制回收所有资源
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
+        /// <param name="packageName">资源包名称,当packageName为 null 时,卸载[默认]资源包</param>
         [UnityEngine.Scripting.Preserve]
-        void UnloadAllAssetsAsync(string packageName);
+        void UnloadAllAssetsAsync(string packageName = null);
 
         /// <summary>
         /// 卸载资源
