@@ -1,4 +1,3 @@
-using GameFrameX.Runtime;
 using YooAsset;
 
 namespace GameFrameX.Asset.Runtime
@@ -19,15 +18,29 @@ namespace GameFrameX.Asset.Runtime
             }
 
             [UnityEngine.Scripting.Preserve]
-            public string GetRemoteMainURL(string fileName)
+            public string GetRemoteMainURL(string fileName, string packageVersion)
             {
-                return HostServer + fileName;
+                if (string.IsNullOrEmpty(packageVersion))
+                {
+                    return HostServer + fileName;
+                }
+                else
+                {
+                    return HostServer + packageVersion + "/" + fileName;
+                }
             }
 
             [UnityEngine.Scripting.Preserve]
-            public string GetRemoteFallbackURL(string fileName)
+            public string GetRemoteFallbackURL(string fileName, string packageVersion)
             {
-                return FallbackHostServer + fileName;
+                if (string.IsNullOrEmpty(packageVersion))
+                {
+                    return FallbackHostServer + fileName;
+                }
+                else
+                {
+                    return FallbackHostServer + packageVersion + "/" + fileName;
+                }
             }
         }
 
