@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.2.0...2.2.1) (2026-03-14)
+
+
+### Bug Fixes
+
+* **Asset:** 修复远程资源URL生成逻辑 ([e8ab2f5](https://github.com/gameframex/com.gameframex.unity.asset/commit/e8ab2f5aaa09be16dade4bc88d87784a500ba421))
+
 # [2.2.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.1.2...2.2.0) (2026-03-06)
 
 
