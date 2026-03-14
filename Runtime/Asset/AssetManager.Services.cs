@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using YooAsset;
 
 namespace GameFrameX.Asset.Runtime
@@ -9,6 +10,7 @@ namespace GameFrameX.Asset.Runtime
         {
             [UnityEngine.Scripting.Preserve] public string HostServer { get; }
             [UnityEngine.Scripting.Preserve] public string FallbackHostServer { get; }
+            private readonly Dictionary<string, string> _mapping = new(1024);
 
             [UnityEngine.Scripting.Preserve]
             public RemoteServices(string hostServer, string fallbackHostServer)
@@ -20,27 +22,26 @@ namespace GameFrameX.Asset.Runtime
             [UnityEngine.Scripting.Preserve]
             public string GetRemoteMainURL(string fileName, string packageVersion)
             {
-                if (string.IsNullOrEmpty(packageVersion))
-                {
-                    return HostServer + fileName;
-                }
-                else
-                {
-                    return HostServer + packageVersion + "/" + fileName;
-                }
+                return GetFileLoadURL(fileName);
             }
 
             [UnityEngine.Scripting.Preserve]
             public string GetRemoteFallbackURL(string fileName, string packageVersion)
             {
-                if (string.IsNullOrEmpty(packageVersion))
+                return GetFileLoadURL(fileName, true);
+            }
+
+            [UnityEngine.Scripting.Preserve]
+            private string GetFileLoadURL(string fileName, bool isFallback = false)
+            {
+                if (_mapping.TryGetValue(fileName, out var url) == false)
                 {
-                    return FallbackHostServer + fileName;
+                    var requestUrl = PathUtility.Combine(isFallback ? FallbackHostServer : HostServer, fileName);
+                    _mapping.Add(fileName, requestUrl);
+                    url = requestUrl;
                 }
-                else
-                {
-                    return FallbackHostServer + packageVersion + "/" + fileName;
-                }
+
+                return url;
             }
         }
 
