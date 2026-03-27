@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.2.1...2.2.2) (2026-03-27)
+
+
+### Bug Fixes
+
+* 修复微信小游戏环境下 AssetManager 初始化条件编译错误 ([6b65a6a](https://github.com/gameframex/com.gameframex.unity.asset/commit/6b65a6a55b5c567f9100026e6c7248a8e15e40a0))
+
 ## [2.2.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.2.0...2.2.1) (2026-03-14)
 
 
