@@ -88,6 +88,10 @@ namespace GameFrameX.Asset.Runtime
             FileSystemParameters webFileSystem = null;
 #if UNITY_WEBGL
 #if ENABLE_DOUYIN_MINI_GAME
+            // https://developer.open-douyin.com/docs/resource/zh-CN/mini-game/develop/guide/performance-optimization-both/unity/startup/use-predownload-feature#ac640a2e
+            TTSDK.TT.PreloadConcurrent(10);
+            // 强行控制并发数量
+            GameEntry.GetComponent<AssetComponent>().gameObject.GetOrAddComponent<DouYinConfigHandler>();
             // 创建字节小游戏文件系统
             // https: //www.yooasset.com/docs/MiniGame#%E6%8A%96%E9%9F%B3%E5%B0%8F%E6%B8%B8%E6%88%8F
             if (hostServerURL.IsNullOrWhiteSpace())
