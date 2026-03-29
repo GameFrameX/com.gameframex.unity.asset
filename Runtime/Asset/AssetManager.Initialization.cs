@@ -9,7 +9,7 @@ namespace GameFrameX.Asset.Runtime
     public partial class AssetManager
     {
         public const string ConstDefaultPackageName = "DefaultPackage";
-        
+
         /// <summary>
         /// 根据运行模式创建初始化操作数据
         /// </summary>
@@ -106,9 +106,7 @@ namespace GameFrameX.Asset.Runtime
             //https://www.yooasset.com/docs/MiniGame#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F
             WeChatWASM.WXBase.PreloadConcurrent(10);
             // 强行控制并发数量
-// #if ENABLE_GAME_FRAME_X_YOO_ASSET_MINI_GAME
             GameEntry.GetComponent<AssetComponent>().gameObject.GetOrAddComponent<WeChatConfigHandler>();
-// #endif
             string packageRoot = $"{WeChatWASM.WXBase.env.USER_DATA_PATH}/__GAME_FILE_CACHE/{YooAssetSettingsData.Setting.DefaultYooFolderName}";
             // 创建微信小游戏文件系统
             if (hostServerURL.IsNullOrWhiteSpace())
