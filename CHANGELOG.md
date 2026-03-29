@@ -1,3 +1,15 @@
+# [2.3.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.2.2...2.3.0) (2026-03-29)
+
+
+### Bug Fixes
+
+* 移除微信小游戏平台的条件编译宏定义 ([2a52d59](https://github.com/gameframex/com.gameframex.unity.asset/commit/2a52d59138245617c26be76416a2fdfc3d4e1bb1))
+
+
+### Features
+
+* **AssetManager:** 添加抖音小游戏预加载并发控制 ([feac7f6](https://github.com/gameframex/com.gameframex.unity.asset/commit/feac7f6600552ef6b9e12458e6eab21222a9219a))
+
 ## [2.2.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.2.1...2.2.2) (2026-03-27)
 
 
