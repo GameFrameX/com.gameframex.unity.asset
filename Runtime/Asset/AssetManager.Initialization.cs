@@ -119,10 +119,12 @@ namespace GameFrameX.Asset.Runtime
             }
 #elif ENABLE_KUAISHOU_MINI_GAME
             // https://open.kuaishou.com/miniGameDocs/gameDev/Unity/Launchability/AssetBundle.html
+#if !UNITY_EDITOR
             KSWASM.KSBase.PreloadConcurrent(10);
+#endif
             // 强行控制并发数量
             GameEntry.GetComponent<AssetComponent>().gameObject.GetOrAddComponent<KuaiShouConfigHandler>();
-            string packageRoot = $"{KSWASM.KSBase.env.USER_DATA_PATH}/__GAME_FILE_CACHE/{YooAssetSettingsData.Setting.DefaultYooFolderName}";
+            // string packageRoot = $"{KSWASM.KSBase.env.USER_DATA_PATH}/__GAME_FILE_CACHE/{YooAssetSettingsData.Setting.DefaultYooFolderName}";
             // 创建快手小游戏文件系统
             if (hostServerURL.IsNullOrWhiteSpace())
             {
