@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.3.0...2.4.0) (2026-04-10)
+
+
+### Bug Fixes
+
+* **AssetManager:** 修复快手小游戏平台下的编译错误 ([5999a16](https://github.com/gameframex/com.gameframex.unity.asset/commit/5999a16c40d96f1cc42965421fd775faa65d9bf1))
+
+
+### Features
+
+* **AssetManager:** 添加快手小游戏平台的文件系统支持 ([f26f993](https://github.com/gameframex/com.gameframex.unity.asset/commit/f26f993914d39e5a794417e23b4b30e497685a96))
+
 # [2.3.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.2.2...2.3.0) (2026-03-29)
 
 
