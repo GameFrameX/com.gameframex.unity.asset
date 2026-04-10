@@ -117,6 +117,21 @@ namespace GameFrameX.Asset.Runtime
             {
                 webFileSystem = WechatFileSystemCreater.CreateWechatPathFileSystemParameters(hostServerURL);
             }
+#elif ENABLE_KUAISHOU_MINI_GAME
+            // https://open.kuaishou.com/miniGameDocs/gameDev/Unity/Launchability/AssetBundle.html
+            KSWASM.KSBase.PreloadConcurrent(10);
+            // 强行控制并发数量
+            GameEntry.GetComponent<AssetComponent>().gameObject.GetOrAddComponent<KuaiShouConfigHandler>();
+            string packageRoot = $"{KSWASM.KSBase.env.USER_DATA_PATH}/__GAME_FILE_CACHE/{YooAssetSettingsData.Setting.DefaultYooFolderName}";
+            // 创建快手小游戏文件系统
+            if (hostServerURL.IsNullOrWhiteSpace())
+            {
+                webFileSystem = KuaiShouFileSystemCreater.CreateKuaiShouFileSystemParameters();
+            }
+            else
+            {
+                webFileSystem = KuaiShouFileSystemCreater.CreateKuaiShouPathFileSystemParameters(hostServerURL);
+            }
 #else
             // 创建默认WebGL文件系统
             webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
