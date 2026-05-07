@@ -1,3 +1,12 @@
+# [2.5.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.4.2...2.5.0) (2026-05-07)
+
+
+### Features
+
+* **asset:** 为AssetComponent添加多种资源类型的加载扩展方法 ([3d107a6](https://github.com/gameframex/com.gameframex.unity.asset/commit/3d107a6c237af8758be1f9f7a2c92e3fd4e1c2ea))
+* **Asset:** 添加RequireComponent属性依赖 ([7a8d1ac](https://github.com/gameframex/com.gameframex.unity.asset/commit/7a8d1acb36f5e3dd8fa4992e7120db70547f5388))
+* **Asset:** 添加多种Unity资源类型的加载扩展方法 ([3ae43f5](https://github.com/gameframex/com.gameframex.unity.asset/commit/3ae43f56c082ac494d485bdb242a790efaf1096c))
+
 ## [2.4.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.4.1...2.4.2) (2026-05-07)
 
 
