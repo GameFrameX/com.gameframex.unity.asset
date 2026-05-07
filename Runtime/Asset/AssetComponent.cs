@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameFrameX.Runtime;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using YooAsset;
 
 namespace GameFrameX.Asset.Runtime
@@ -439,7 +438,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true)
+        public Task<SceneHandle> LoadSceneAsync(string path, UnityEngine.SceneManagement.LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             return _assetManager.LoadSceneAsync(path, sceneMode, activateOnLoad);
         }
@@ -452,7 +451,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true)
+        public Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, UnityEngine.SceneManagement.LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             return _assetManager.LoadSceneAsync(assetInfo, sceneMode, activateOnLoad);
         }
