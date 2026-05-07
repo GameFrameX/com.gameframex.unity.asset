@@ -15,6 +15,7 @@ namespace GameFrameX.Asset.Runtime
     /// </remarks>
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Asset")]
+    [RequireComponent(typeof(GameFrameXAssetCroppingHelper))]
     [UnityEngine.Scripting.Preserve]
     public sealed class AssetComponent : GameFrameworkComponent
     {
