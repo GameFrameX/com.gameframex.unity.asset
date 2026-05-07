@@ -10,6 +10,9 @@ namespace GameFrameX.Asset.Runtime
     /// <summary>
     /// 资源组件。
     /// </summary>
+    /// <remarks>
+    /// Asset component that provides resource loading, unloading, and package management capabilities.
+    /// </remarks>
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Asset")]
     [UnityEngine.Scripting.Preserve]
@@ -19,8 +22,12 @@ namespace GameFrameX.Asset.Runtime
         private EPlayMode m_GamePlayMode;
 
         /// <summary>
-        /// 资源的运行模式
+        /// 获取或设置资源的运行模式。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the asset play mode.
+        /// </remarks>
+        /// <value>资源的运行模式 / Asset play mode</value>
         [UnityEngine.Scripting.Preserve]
         public EPlayMode GamePlayMode
         {
@@ -31,6 +38,13 @@ namespace GameFrameX.Asset.Runtime
         [SerializeField] private List<AssetResourcePackageInfo> m_assetResourcePackages = new List<AssetResourcePackageInfo>();
 #endif
 
+        /// <summary>
+        /// 内置资源包的默认名称。
+        /// </summary>
+        /// <remarks>
+        /// The default name of the built-in asset package.
+        /// </remarks>
+        /// <value>内置资源包名称 / Built-in package name</value>
         public const string BuildInPackageName = "DefaultPackage";
         private InitializationOperation _initializationOperation;
 
@@ -68,12 +82,16 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 初始化资源包
+        /// 异步初始化资源包。
         /// </summary>
-        /// <param name="packageName">包名称</param>
-        /// <param name="host">主下载地址</param>
-        /// <param name="fallbackHostServer">备用下载地址</param>
-        /// <param name="isDefaultPackage">是否是默认包</param>
+        /// <remarks>
+        /// Asynchronously initializes an asset package.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
+        /// <param name="host">主下载地址 / Primary download URL</param>
+        /// <param name="fallbackHostServer">备用下载地址 / Fallback download URL</param>
+        /// <param name="isDefaultPackage">是否为默认资源包 / Whether this is the default package</param>
+        /// <returns>初始化是否成功 / Whether initialization succeeded</returns>
         [UnityEngine.Scripting.Preserve]
         public async Task<bool> InitPackageAsync(string packageName, string host, string fallbackHostServer, bool isDefaultPackage = false)
         {
@@ -95,10 +113,13 @@ namespace GameFrameX.Asset.Runtime
         #region 异步加载子资源对象
 
         /// <summary>
-        /// 异步加载子资源对象
+        /// 异步加载子资源对象。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads sub-asset objects.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>子资源操作句柄的异步任务 / Async task of the sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<SubAssetsHandle> LoadSubAssetsAsync(AssetInfo assetInfo)
         {
@@ -106,11 +127,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载子资源对象
+        /// 异步加载子资源对象。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads sub-asset objects.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <param name="type">子资源类型 / Sub-asset type</param>
+        /// <returns>子资源操作句柄的异步任务 / Async task of the sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<SubAssetsHandle> LoadSubAssetsAsync(string path, Type type)
         {
@@ -118,10 +142,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载子资源对象
+        /// 异步加载子资源对象。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads sub-asset objects.
+        /// </remarks>
+        /// <typeparam name="T">子资源类型 / Sub-asset type</typeparam>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>子资源操作句柄的异步任务 / Async task of the sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : UnityEngine.Object
         {
@@ -133,10 +161,13 @@ namespace GameFrameX.Asset.Runtime
         #region 同步加载子资源对象
 
         /// <summary>
-        /// 同步加载子资源对象
+        /// 同步加载子资源对象。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads sub-asset objects.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>子资源操作句柄 / Sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetSync(AssetInfo assetInfo)
         {
@@ -144,11 +175,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载子资源对象
+        /// 同步加载子资源对象。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads sub-asset objects.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <param name="type">子资源类型 / Sub-asset type</param>
+        /// <returns>子资源操作句柄 / Sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetSync(string path, Type type)
         {
@@ -156,10 +190,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载子资源对象
+        /// 同步加载子资源对象。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads sub-asset objects.
+        /// </remarks>
+        /// <typeparam name="T">子资源类型 / Sub-asset type</typeparam>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>子资源操作句柄 / Sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetSync<T>(string path) where T : UnityEngine.Object
         {
@@ -171,10 +209,13 @@ namespace GameFrameX.Asset.Runtime
         #region 异步加载原生文件
 
         /// <summary>
-        /// 异步加载原生文件
+        /// 异步加载原生文件。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads a raw file.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>原生文件操作句柄的异步任务 / Async task of the raw file handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<RawFileHandle> LoadRawFileAsync(AssetInfo assetInfo)
         {
@@ -182,10 +223,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载原生文件
+        /// 异步加载原生文件。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads a raw file.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>原生文件操作句柄的异步任务 / Async task of the raw file handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<RawFileHandle> LoadRawFileAsync(string path)
         {
@@ -197,10 +241,13 @@ namespace GameFrameX.Asset.Runtime
         #region 同步加载原生文件
 
         /// <summary>
-        /// 同步加载原生文件
+        /// 同步加载原生文件。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads a raw file.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>原生文件操作句柄 / Raw file handle</returns>
         [UnityEngine.Scripting.Preserve]
         public RawFileHandle LoadRawFileSync(AssetInfo assetInfo)
         {
@@ -208,10 +255,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载原生文件
+        /// 同步加载原生文件。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads a raw file.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>原生文件操作句柄 / Raw file handle</returns>
         [UnityEngine.Scripting.Preserve]
         public RawFileHandle LoadRawFileSync(string path)
         {
@@ -224,10 +274,13 @@ namespace GameFrameX.Asset.Runtime
         #region 异步加载资源
 
         /// <summary>
-        /// 异步加载资源
+        /// 异步加载资源。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads an asset.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>资源操作句柄的异步任务 / Async task of the asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AssetHandle> LoadAssetAsync(AssetInfo assetInfo)
         {
@@ -235,11 +288,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载资源
+        /// 异步加载资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="type">资源类型</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads an asset.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <param name="type">资源类型 / Asset type</param>
+        /// <returns>资源操作句柄的异步任务 / Async task of the asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AssetHandle> LoadAssetAsync(string path, Type type)
         {
@@ -247,11 +303,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载资源
+        /// 异步加载资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <typeparam name="T">资源类型</typeparam>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads an asset.
+        /// </remarks>
+        /// <typeparam name="T">资源类型 / Asset type</typeparam>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>资源操作句柄的异步任务 / Async task of the asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AssetHandle> LoadAssetAsync<T>(string path) where T : UnityEngine.Object
         {
@@ -259,11 +318,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载全部资源
+        /// 异步加载全部资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <typeparam name="T">资源类型</typeparam>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads all assets.
+        /// </remarks>
+        /// <typeparam name="T">资源类型 / Asset type</typeparam>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>全部资源操作句柄的异步任务 / Async task of the all-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : UnityEngine.Object
         {
@@ -271,11 +333,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载全部资源
+        /// 异步加载全部资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="type">资源类型</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads all assets.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <param name="type">资源类型 / Asset type</param>
+        /// <returns>全部资源操作句柄的异步任务 / Async task of the all-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AllAssetsHandle> LoadAllAssetsAsync(string path, Type type)
         {
@@ -283,9 +348,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载资源包内所有资源对象
+        /// 异步加载资源包内所有资源对象。
         /// </summary>
-        /// <param name="path">资源的定位地址</param>
+        /// <remarks>
+        /// Asynchronously loads all asset objects within the asset bundle.
+        /// </remarks>
+        /// <param name="path">资源的定位地址 / Asset location address</param>
+        /// <returns>全部资源操作句柄的异步任务 / Async task of the all-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AllAssetsHandle> LoadAllAssetsAsync(string path)
         {
@@ -293,9 +362,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载资源包内所有资源对象
+        /// 异步加载资源包内所有资源对象。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
+        /// <remarks>
+        /// Asynchronously loads all asset objects within the asset bundle.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>全部资源操作句柄的异步任务 / Async task of the all-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AllAssetsHandle> LoadAllAssetsAsync(AssetInfo assetInfo)
         {
@@ -303,10 +376,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载资源
+        /// 异步加载资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads an asset.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>资源操作句柄的异步任务 / Async task of the asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<AssetHandle> LoadAssetAsync(string path)
         {
@@ -314,9 +390,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载子资源对象
+        /// 异步加载子资源对象。
         /// </summary>
-        /// <param name="path">资源的定位地址</param>
+        /// <remarks>
+        /// Asynchronously loads sub-asset objects.
+        /// </remarks>
+        /// <param name="path">资源的定位地址 / Asset location address</param>
+        /// <returns>子资源操作句柄 / Sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetsAsync(string path)
         {
@@ -328,9 +408,13 @@ namespace GameFrameX.Asset.Runtime
         #region 同步加载资源
 
         /// <summary>
-        /// 同步加载资源包内所有资源对象
+        /// 同步加载资源包内所有资源对象。
         /// </summary>
-        /// <param name="path">资源的定位地址</param>
+        /// <remarks>
+        /// Synchronously loads all asset objects within the asset bundle.
+        /// </remarks>
+        /// <param name="path">资源的定位地址 / Asset location address</param>
+        /// <returns>全部资源操作句柄 / All-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync(string path)
         {
@@ -338,10 +422,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载资源包内所有资源对象
+        /// 同步加载资源包内所有资源对象。
         /// </summary>
-        /// <typeparam name="T">资源类型</typeparam>
-        /// <param name="path">资源的定位地址</param>
+        /// <remarks>
+        /// Synchronously loads all asset objects within the asset bundle.
+        /// </remarks>
+        /// <typeparam name="T">资源类型 / Asset type</typeparam>
+        /// <param name="path">资源的定位地址 / Asset location address</param>
+        /// <returns>全部资源操作句柄 / All-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : UnityEngine.Object
         {
@@ -349,10 +437,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载资源包内所有资源对象
+        /// 同步加载资源包内所有资源对象。
         /// </summary>
-        /// <param name="path">资源的定位地址</param>
-        /// <param name="type">子对象类型</param>
+        /// <remarks>
+        /// Synchronously loads all asset objects within the asset bundle.
+        /// </remarks>
+        /// <param name="path">资源的定位地址 / Asset location address</param>
+        /// <param name="type">子对象类型 / Sub-object type</param>
+        /// <returns>全部资源操作句柄 / All-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync(string path, Type type)
         {
@@ -360,10 +452,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载包内全部资源对象
+        /// 同步加载包内全部资源对象。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads all asset objects within the package.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>全部资源操作句柄 / All-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AllAssetsHandle LoadAllAssetsSync(AssetInfo assetInfo)
         {
@@ -371,10 +466,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载子资源
+        /// 同步加载子资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads sub-assets.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>子资源操作句柄 / Sub-assets handle</returns>
         [UnityEngine.Scripting.Preserve]
         public SubAssetsHandle LoadSubAssetsSync(string path)
         {
@@ -382,10 +480,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载资源
+        /// 同步加载资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads an asset.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>资源操作句柄 / Asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetsSync(string path)
         {
@@ -393,11 +494,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载资源
+        /// 同步加载资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="type"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads an asset.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <param name="type">资源类型 / Asset type</param>
+        /// <returns>资源操作句柄 / Asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetSync(string path, Type type)
         {
@@ -405,10 +509,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载资源
+        /// 同步加载资源。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads an asset.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>资源操作句柄 / Asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetSync(AssetInfo assetInfo)
         {
@@ -416,10 +523,14 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 同步加载资源
+        /// 同步加载资源。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Synchronously loads an asset.
+        /// </remarks>
+        /// <typeparam name="T">资源类型 / Asset type</typeparam>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>资源操作句柄 / Asset handle</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetHandle LoadAssetSync<T>(string path) where T : UnityEngine.Object
         {
@@ -431,12 +542,15 @@ namespace GameFrameX.Asset.Runtime
         #region 加载场景
 
         /// <summary>
-        /// 异步加载场景
+        /// 异步加载场景。
         /// </summary>
-        /// <param name="path">资源路径</param>
-        /// <param name="sceneMode">场景模式</param>
-        /// <param name="activateOnLoad">是否加载完成自动激活</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads a scene.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <param name="sceneMode">场景加载模式 / Scene load mode</param>
+        /// <param name="activateOnLoad">加载完成后是否自动激活 / Whether to activate automatically after loading</param>
+        /// <returns>场景操作句柄的异步任务 / Async task of the scene handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<SceneHandle> LoadSceneAsync(string path, UnityEngine.SceneManagement.LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
@@ -444,12 +558,15 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 异步加载场景
+        /// 异步加载场景。
         /// </summary>
-        /// <param name="assetInfo">资源路径</param>
-        /// <param name="sceneMode">场景模式</param>
-        /// <param name="activateOnLoad">是否加载完成自动激活</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Asynchronously loads a scene.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <param name="sceneMode">场景加载模式 / Scene load mode</param>
+        /// <param name="activateOnLoad">加载完成后是否自动激活 / Whether to activate automatically after loading</param>
+        /// <returns>场景操作句柄的异步任务 / Async task of the scene handle</returns>
         [UnityEngine.Scripting.Preserve]
         public Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, UnityEngine.SceneManagement.LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
@@ -461,10 +578,13 @@ namespace GameFrameX.Asset.Runtime
         #region 资源包
 
         /// <summary>
-        /// 创建资源包
+        /// 创建资源包。
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Creates an asset package.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
+        /// <returns>创建的资源包实例 / Created resource package instance</returns>
         [UnityEngine.Scripting.Preserve]
         public ResourcePackage CreateAssetsPackage(string packageName)
         {
@@ -472,10 +592,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 尝试获取资源包
+        /// 尝试获取资源包。
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tries to get an asset package.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
+        /// <returns>资源包实例；如果不存在则返回 null / Resource package instance; null if not found</returns>
         [UnityEngine.Scripting.Preserve]
         public ResourcePackage TryGetAssetsPackage(string packageName)
         {
@@ -483,10 +606,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 检查资源包是否存在
+        /// 检查资源包是否存在。
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks whether an asset package exists.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
+        /// <returns>如果存在则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if the package exists; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasAssetsPackage(string packageName)
         {
@@ -494,10 +620,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 获取资源包
+        /// 获取资源包。
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets an asset package.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
+        /// <returns>资源包实例 / Resource package instance</returns>
         [UnityEngine.Scripting.Preserve]
         public ResourcePackage GetAssetsPackage(string packageName)
         {
@@ -507,10 +636,13 @@ namespace GameFrameX.Asset.Runtime
         #endregion
 
         /// <summary>
-        /// 是否需要下载
+        /// 检查指定资源是否需要下载。
         /// </summary>
-        /// <param name="assetInfo">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks whether the specified asset needs to be downloaded.
+        /// </remarks>
+        /// <param name="assetInfo">资源信息 / Asset information</param>
+        /// <returns>如果需要下载则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if download is needed; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public bool IsNeedDownload(AssetInfo assetInfo)
         {
@@ -518,10 +650,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 是否需要下载
+        /// 检查指定资源是否需要下载。
         /// </summary>
-        /// <param name="path">资源地址</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks whether the specified asset needs to be downloaded.
+        /// </remarks>
+        /// <param name="path">资源地址 / Asset path</param>
+        /// <returns>如果需要下载则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if download is needed; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public bool IsNeedDownload(string path)
         {
@@ -529,10 +664,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 获取资源信息
+        /// 根据资源标签列表获取资源信息数组。
         /// </summary>
-        /// <param name="assetTags">资源标签列表</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets asset information array by asset tag list.
+        /// </remarks>
+        /// <param name="assetTags">资源标签列表 / Asset tag list</param>
+        /// <returns>匹配的资源信息数组 / Array of matching asset information</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetInfo[] GetAssetInfos(string[] assetTags)
         {
@@ -540,10 +678,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 获取资源信息
+        /// 根据资源标签获取资源信息数组。
         /// </summary>
-        /// <param name="assetTag">资源标签</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets asset information array by asset tag.
+        /// </remarks>
+        /// <param name="assetTag">资源标签 / Asset tag</param>
+        /// <returns>匹配的资源信息数组 / Array of matching asset information</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetInfo[] GetAssetInfos(string assetTag)
         {
@@ -551,8 +692,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 获取资源信息
+        /// 根据资源路径获取资源信息。
         /// </summary>
+        /// <remarks>
+        /// Gets asset information by asset path.
+        /// </remarks>
+        /// <param name="path">资源路径 / Asset path</param>
+        /// <returns>资源信息 / Asset information</returns>
         [UnityEngine.Scripting.Preserve]
         public AssetInfo GetAssetInfo(string path)
         {
@@ -562,8 +708,11 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 检查指定的资源路径是否存在。
         /// </summary>
-        /// <param name="assetPath">要检查的资源路径。</param>
-        /// <returns>如果存在指定的资源路径，则返回 true；否则返回 false。</returns>
+        /// <remarks>
+        /// Checks whether the specified asset path exists.
+        /// </remarks>
+        /// <param name="assetPath">要检查的资源路径 / Asset path to check</param>
+        /// <returns>如果存在则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if the asset path exists; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public bool HasAssetPath(string assetPath)
         {
@@ -571,10 +720,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 设置默认资源包
+        /// 设置默认资源包。
         /// </summary>
-        /// <param name="assetsPackage">资源信息</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Sets the default asset package.
+        /// </remarks>
+        /// <param name="assetsPackage">资源包实例 / Resource package instance</param>
         [UnityEngine.Scripting.Preserve]
         public void SetDefaultAssetsPackage(ResourcePackage assetsPackage)
         {
@@ -582,9 +733,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 强制回收所有资源
+        /// 强制回收指定资源包内的所有资源。
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
+        /// <remarks>
+        /// Forces unloading of all assets in the specified package.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
         [UnityEngine.Scripting.Preserve]
         public void UnloadAllAssetsAsync(string packageName)
         {
@@ -592,10 +746,13 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 卸载资源
+        /// 卸载指定资源包内的资源。
         /// </summary>
-        /// <param name="packageName">资源包名称</param>
-        /// <param name="assetPath">资源路径</param>
+        /// <remarks>
+        /// Unloads an asset in the specified package.
+        /// </remarks>
+        /// <param name="packageName">资源包名称 / Asset package name</param>
+        /// <param name="assetPath">资源路径 / Asset path</param>
         [UnityEngine.Scripting.Preserve]
         public void UnloadAsset(string packageName, string assetPath)
         {
@@ -603,9 +760,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 卸载资源
+        /// 卸载资源。
         /// </summary>
-        /// <param name="assetPath">资源路径</param>
+        /// <remarks>
+        /// Unloads an asset.
+        /// </remarks>
+        /// <param name="assetPath">资源路径 / Asset path</param>
         [UnityEngine.Scripting.Preserve]
         public void UnloadAsset(string assetPath)
         {
@@ -613,9 +773,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 卸载资源
+        /// 卸载资源句柄。
         /// </summary>
-        /// <param name="assetHandle">资源句柄</param>
+        /// <remarks>
+        /// Unloads an asset handle.
+        /// </remarks>
+        /// <param name="assetHandle">资源句柄 / Asset handle</param>
         [UnityEngine.Scripting.Preserve]
         public void UnloadAssetHandle(object assetHandle)
         {
@@ -626,9 +789,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 卸载无用资源
+        /// 卸载无用资源。
         /// </summary>
-        /// <param name="packageName">资源包名称,当packageName为 null 时,卸载[默认]资源包</param>
+        /// <remarks>
+        /// Unloads unused assets.
+        /// </remarks>
+        /// <param name="packageName">资源包名称，为 null 时卸载默认资源包 / Asset package name; unloads the default package when null</param>
         [UnityEngine.Scripting.Preserve]
         public void UnloadUnusedAssetsAsync(string packageName = null)
         {
@@ -636,9 +802,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 清理所有资源
+        /// 清理所有资源包文件。
         /// </summary>
-        /// <param name="packageName">资源包名称,当packageName为 null 时,清理[默认]资源包</param>
+        /// <remarks>
+        /// Clears all bundle files.
+        /// </remarks>
+        /// <param name="packageName">资源包名称，为 null 时清理默认资源包 / Asset package name; clears the default package when null</param>
         [UnityEngine.Scripting.Preserve]
         public void ClearAllBundleFilesAsync(string packageName = null)
         {
@@ -646,9 +815,12 @@ namespace GameFrameX.Asset.Runtime
         }
 
         /// <summary>
-        /// 清理无用资源
+        /// 清理无用资源包文件。
         /// </summary>
-        /// <param name="packageName">资源包名称,当packageName为 null 时,清理[默认]资源包</param>
+        /// <remarks>
+        /// Clears unused bundle files.
+        /// </remarks>
+        /// <param name="packageName">资源包名称，为 null 时清理默认资源包 / Asset package name; clears the default package when null</param>
         [UnityEngine.Scripting.Preserve]
         public void ClearUnusedBundleFilesAsync(string packageName = null)
         {
@@ -656,11 +828,37 @@ namespace GameFrameX.Asset.Runtime
         }
     }
 #if UNITY_EDITOR
+    /// <summary>
+    /// 资源包配置信息（仅编辑器使用）。
+    /// </summary>
+    /// <remarks>
+    /// Asset resource package configuration info (editor only).
+    /// </remarks>
     [Serializable]
     public sealed class AssetResourcePackageInfo
     {
+        /// <summary>
+        /// 资源包名称。
+        /// </summary>
+        /// <remarks>
+        /// Asset package name.
+        /// </remarks>
         [SerializeField] public string PackageName;
+
+        /// <summary>
+        /// 主下载地址。
+        /// </summary>
+        /// <remarks>
+        /// Primary download URL.
+        /// </remarks>
         [SerializeField] public string DownloadURL;
+
+        /// <summary>
+        /// 备用下载地址。
+        /// </summary>
+        /// <remarks>
+        /// Fallback download URL.
+        /// </remarks>
         [SerializeField] public string FallbackDownloadURL;
     }
 #endif
