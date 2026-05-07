@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using GameFrameX.Runtime;
-using UnityEngine.SceneManagement;
 using YooAsset;
 using Object = UnityEngine.Object;
 
@@ -617,10 +616,10 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<SceneHandle> LoadSceneAsync(string path, LoadSceneMode sceneMode, bool activateOnLoad = true)
+        public Task<SceneHandle> LoadSceneAsync(string path, UnityEngine.SceneManagement.LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             var taskCompletionSource = new TaskCompletionSource<SceneHandle>();
-            var sceneHandle = YooAssets.LoadSceneAsync(path, sceneMode, LocalPhysicsMode.None, !activateOnLoad);
+            var sceneHandle = YooAssets.LoadSceneAsync(path, sceneMode, UnityEngine.SceneManagement.LocalPhysicsMode.None, !activateOnLoad);
             sceneHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
         }
@@ -633,10 +632,10 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="activateOnLoad">是否加载完成自动激活</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, LoadSceneMode sceneMode, bool activateOnLoad = true)
+        public Task<SceneHandle> LoadSceneAsync(AssetInfo assetInfo, UnityEngine.SceneManagement.LoadSceneMode sceneMode, bool activateOnLoad = true)
         {
             var taskCompletionSource = new TaskCompletionSource<SceneHandle>();
-            var sceneHandle = YooAssets.LoadSceneAsync(assetInfo, sceneMode, LocalPhysicsMode.None, !activateOnLoad);
+            var sceneHandle = YooAssets.LoadSceneAsync(assetInfo, sceneMode, UnityEngine.SceneManagement.LocalPhysicsMode.None, !activateOnLoad);
             sceneHandle.Completed += handle => { taskCompletionSource.TrySetResult(handle); };
             return taskCompletionSource.Task;
         }
