@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using YooAsset;
-using Object = UnityEngine.Object;
 
 namespace GameFrameX.Asset.Runtime
 {
@@ -131,7 +130,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object;
+        Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : UnityEngine.Object;
 
         #endregion
 
@@ -160,7 +159,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        SubAssetsHandle LoadSubAssetSync<T>(string path) where T : Object;
+        SubAssetsHandle LoadSubAssetSync<T>(string path) where T : UnityEngine.Object;
 
         #endregion
 
@@ -231,7 +230,7 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        Task<AssetHandle> LoadAssetAsync<T>(string path) where T : Object;
+        Task<AssetHandle> LoadAssetAsync<T>(string path) where T : UnityEngine.Object;
 
         /// <summary>
         /// 异步加载全部资源
@@ -239,7 +238,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object;
+        Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : UnityEngine.Object;
 
         /// <summary>
         /// 异步加载全部资源
@@ -305,7 +304,7 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <param name="path">资源的定位地址</param>
         [UnityEngine.Scripting.Preserve]
-        AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : Object;
+        AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : UnityEngine.Object;
 
         /// <summary>
         /// 同步加载资源包内所有资源对象
@@ -362,7 +361,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        AssetHandle LoadAssetSync<T>(string path) where T : Object;
+        AssetHandle LoadAssetSync<T>(string path) where T : UnityEngine.Object;
 
         #endregion
 

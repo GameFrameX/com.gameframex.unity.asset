@@ -5,7 +5,6 @@ using GameFrameX.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YooAsset;
-using Object = UnityEngine.Object;
 
 namespace GameFrameX.Asset.Runtime
 {
@@ -125,7 +124,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : Object
+        public Task<SubAssetsHandle> LoadSubAssetsAsync<T>(string path) where T : UnityEngine.Object
         {
             return _assetManager.LoadSubAssetsAsync<T>(path);
         }
@@ -163,7 +162,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public SubAssetsHandle LoadSubAssetSync<T>(string path) where T : Object
+        public SubAssetsHandle LoadSubAssetSync<T>(string path) where T : UnityEngine.Object
         {
             return _assetManager.LoadSubAssetSync<T>(path);
         }
@@ -255,7 +254,7 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<AssetHandle> LoadAssetAsync<T>(string path) where T : Object
+        public Task<AssetHandle> LoadAssetAsync<T>(string path) where T : UnityEngine.Object
         {
             return _assetManager.LoadAssetAsync<T>(path);
         }
@@ -267,7 +266,7 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : Object
+        public Task<AllAssetsHandle> LoadAllAssetsAsync<T>(string path) where T : UnityEngine.Object
         {
             return _assetManager.LoadAllAssetsAsync<T>(path);
         }
@@ -345,7 +344,7 @@ namespace GameFrameX.Asset.Runtime
         /// <typeparam name="T">资源类型</typeparam>
         /// <param name="path">资源的定位地址</param>
         [UnityEngine.Scripting.Preserve]
-        public AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : Object
+        public AllAssetsHandle LoadAllAssetsSync<T>(string path) where T : UnityEngine.Object
         {
             return _assetManager.LoadAllAssetsSync<T>(path);
         }
@@ -423,7 +422,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public AssetHandle LoadAssetSync<T>(string path) where T : Object
+        public AssetHandle LoadAssetSync<T>(string path) where T : UnityEngine.Object
         {
             return _assetManager.LoadAssetSync<T>(path);
         }
