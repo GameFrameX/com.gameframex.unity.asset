@@ -1,3 +1,11 @@
+## [2.4.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.4.0...2.4.1) (2026-05-07)
+
+
+### Bug Fixes
+
+* **Asset:** 修复场景加载方法参数类型错误 ([ebf626e](https://github.com/gameframex/com.gameframex.unity.asset/commit/ebf626e20462380cefdaa5f184d220bd29377940))
+* **asset:** 移除冲突的Object别名，使用UnityEngine.Object ([556bb5a](https://github.com/gameframex/com.gameframex.unity.asset/commit/556bb5ac22496cc27f5bba861b10c0b0b1b6f1ed))
+
 # [2.4.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.3.0...2.4.0) (2026-04-10)
 
 
