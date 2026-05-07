@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.4.1...2.4.2) (2026-05-07)
+
+
+### Bug Fixes
+
+* **Asset:** 修复场景加载方法中LoadSceneMode类型引用错误 ([3512f34](https://github.com/gameframex/com.gameframex.unity.asset/commit/3512f34515cbae79ebced8fae177b497f52dbd62))
+
 ## [2.4.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.4.0...2.4.1) (2026-05-07)
 
 
