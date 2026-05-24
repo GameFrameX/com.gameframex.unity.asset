@@ -10,7 +10,7 @@ namespace GameFrameX.Asset.Runtime
         {
             [UnityEngine.Scripting.Preserve] public string HostServer { get; }
             [UnityEngine.Scripting.Preserve] public string FallbackHostServer { get; }
-            private readonly Dictionary<string, string> _mapping = new(1024);
+            private readonly Dictionary<string, string> _mapping = new Dictionary<string, string>(1024);
 
             [UnityEngine.Scripting.Preserve]
             public RemoteServices(string hostServer, string fallbackHostServer)

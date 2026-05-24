@@ -44,7 +44,6 @@ namespace GameFrameX.Asset.Runtime
         [UnityEngine.Scripting.Preserve]
         public void Initialize()
         {
-            BetterStreamingAssets.Initialize();
             Log.Info($"资源系统运行模式：{PlayMode}");
             YooAssets.Initialize();
             YooAssets.SetOperationSystemMaxTimeSlice(30);
