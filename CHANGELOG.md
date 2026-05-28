@@ -1,3 +1,11 @@
+## [2.5.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.5.0...2.5.1) (2026-05-28)
+
+
+### Bug Fixes
+
+* **ci:** 统一 .github 工作流配置 ([6fa0fae](https://github.com/gameframex/com.gameframex.unity.asset/commit/6fa0fae2cb569575b65a0f1d69cd56954f572274))
+* **deps:** 补充 package.json 中缺失的包依赖 ([ce58bc2](https://github.com/gameframex/com.gameframex.unity.asset/commit/ce58bc2bc489ed11f7ff890a64a5980407d72abd))
+
 # [2.5.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.4.2...2.5.0) (2026-05-07)
 
 
