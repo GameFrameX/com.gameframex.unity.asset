@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.5.1...2.5.2) (2026-05-29)
+
+
+### Bug Fixes
+
+* **asset:** 移除 BetterStreamingAssets 依赖 ([bb0e58a](https://github.com/gameframex/com.gameframex.unity.asset/commit/bb0e58a8ac2d07a8d9ae3b781a27d953dca8346e))
+
 ## [2.5.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.5.0...2.5.1) (2026-05-28)
 
 
