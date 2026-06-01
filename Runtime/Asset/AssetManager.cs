@@ -46,7 +46,7 @@ namespace GameFrameX.Asset.Runtime
         {
             Log.Info($"资源系统运行模式：{PlayMode}");
             YooAssets.Initialize();
-            YooAssets.SetOperationSystemMaxTimeSlice(30);
+            YooAssets.SetOperationSystemMaxTimeSlice(Milliseconds > 0 ? Milliseconds : 30);
             // YooAssets.SetCacheSystemCachedFileVerifyLevel(EVerifyLevel.High);
             // YooAssets.SetDownloadSystemBreakpointResumeFileSize(4096 * 8);
 
