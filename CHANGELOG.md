@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.0.0...3.0.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* **ci:** 修复持续集成配置 ([b8473c8](https://github.com/gameframex/com.gameframex.unity.asset/commit/b8473c81918e94bc4266d09909991d211c5dd457))
+
 # [3.0.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.5.2...3.0.0) (2026-06-01)
 
 
