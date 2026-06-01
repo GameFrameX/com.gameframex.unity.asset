@@ -22,7 +22,7 @@ namespace GameFrameX.Asset.Runtime
         /// <summary>
         /// 包名称
         /// </summary>
-        public string PackageName { get; set; }
+        public string PackageName { get; private set; }
 
         public override void Clear()
         {
