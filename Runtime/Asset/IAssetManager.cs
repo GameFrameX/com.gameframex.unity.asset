@@ -23,32 +23,6 @@ namespace GameFrameX.Asset.Runtime
         int FailedTryAgain { get; set; }
 
         /// <summary>
-        /// 获取资源只读区路径。
-        /// </summary>
-        [UnityEngine.Scripting.Preserve]
-        string ReadOnlyPath { get; }
-
-        /// <summary>
-        /// 获取资源读写区路径。
-        /// </summary>
-        [UnityEngine.Scripting.Preserve]
-        string ReadWritePath { get; }
-
-        /// <summary>
-        /// 设置资源只读区路径。
-        /// </summary>
-        /// <param name="readOnlyPath">资源只读区路径。</param>
-        [UnityEngine.Scripting.Preserve]
-        void SetReadOnlyPath(string readOnlyPath);
-
-        /// <summary>
-        /// 设置资源读写区路径。
-        /// </summary>
-        /// <param name="readWritePath">资源读写区路径。</param>
-        [UnityEngine.Scripting.Preserve]
-        void SetReadWritePath(string readWritePath);
-
-        /// <summary>
         /// 获取或设置资源包名称。
         /// </summary>
         [UnityEngine.Scripting.Preserve]

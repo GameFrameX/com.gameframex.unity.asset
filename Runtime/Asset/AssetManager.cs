@@ -768,39 +768,5 @@ namespace GameFrameX.Asset.Runtime
         {
             PlayMode = playMode;
         }
-
-        /// <summary>
-        /// 获取资源只读区路径。
-        /// </summary>
-        [UnityEngine.Scripting.Preserve]
-        public string ReadOnlyPath { get; private set; }
-
-        /// <summary>
-        /// 设置资源只读区路径。
-        /// </summary>
-        /// <param name="readOnlyPath">资源只读区路径。</param>
-        [UnityEngine.Scripting.Preserve]
-        public void SetReadOnlyPath(string readOnlyPath)
-        {
-            GameFrameworkGuard.NotNull(readOnlyPath, nameof(readOnlyPath));
-            ReadOnlyPath = readOnlyPath;
-        }
-
-        /// <summary>
-        /// 获取资源读写区路径。
-        /// </summary>
-        [UnityEngine.Scripting.Preserve]
-        public string ReadWritePath { get; private set; }
-
-        /// <summary>
-        /// 设置资源读写区路径。
-        /// </summary>
-        /// <param name="readWritePath">资源读写区路径。</param>
-        [UnityEngine.Scripting.Preserve]
-        public void SetReadWritePath(string readWritePath)
-        {
-            GameFrameworkGuard.NotNull(readWritePath, nameof(readWritePath));
-            ReadWritePath = readWritePath;
-        }
     }
 }
