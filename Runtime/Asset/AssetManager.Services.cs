@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using YooAsset;
 
 namespace GameFrameX.Asset.Runtime
@@ -10,7 +10,7 @@ namespace GameFrameX.Asset.Runtime
         {
             [UnityEngine.Scripting.Preserve] public string HostServer { get; }
             [UnityEngine.Scripting.Preserve] public string FallbackHostServer { get; }
-            private readonly Dictionary<string, string> _mapping = new Dictionary<string, string>(1024);
+            private readonly ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
 
             [UnityEngine.Scripting.Preserve]
             public RemoteServices(string hostServer, string fallbackHostServer)
@@ -34,14 +34,7 @@ namespace GameFrameX.Asset.Runtime
             [UnityEngine.Scripting.Preserve]
             private string GetFileLoadURL(string fileName, bool isFallback = false)
             {
-                if (_mapping.TryGetValue(fileName, out var url) == false)
-                {
-                    var requestUrl = PathUtility.Combine(isFallback ? FallbackHostServer : HostServer, fileName);
-                    _mapping.Add(fileName, requestUrl);
-                    url = requestUrl;
-                }
-
-                return url;
+                return _mapping.GetOrAdd(fileName, _ => PathUtility.Combine(isFallback ? FallbackHostServer : HostServer, fileName));
             }
         }
     }
