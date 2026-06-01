@@ -177,12 +177,13 @@ namespace GameFrameX.Asset.Runtime
             var package = YooAssets.GetPackage(packageName);
             if (package != null)
             {
+                package.UnloadAllAssetsAsync();
                 package.ClearUnusedBundleFilesAsync();
             }
         }
 
         /// <summary>
-        /// 清理无用资源
+        /// 清理无用资源包文件
         /// </summary>
         /// <param name="packageName">资源包名称</param>
         [UnityEngine.Scripting.Preserve]
@@ -194,10 +195,9 @@ namespace GameFrameX.Asset.Runtime
             }
 
             var package = YooAssets.GetPackage(packageName);
-
             if (package != null)
             {
-                package.UnloadUnusedAssetsAsync();
+                package.ClearUnusedBundleFilesAsync();
             }
         }
 
