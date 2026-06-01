@@ -749,9 +749,7 @@ namespace GameFrameX.Asset.Runtime
 
         protected override void Shutdown()
         {
-            YooAssets.Destroy();
         }
-
 
         /// <summary>
         /// 获取或设置运行模式。
