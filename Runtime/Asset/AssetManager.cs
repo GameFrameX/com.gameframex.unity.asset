@@ -478,28 +478,6 @@ namespace GameFrameX.Asset.Runtime
             return taskCompletionSource.Task;
         }
 
-        /*
-         [UnityEngine.Scripting.Preserve]
-        public async Task<TObject> LoadAssetTaskAsync<TObject>(string assetPath) where TObject : Object
-        {
-            ResourcePackage assetPackage = YooAssets.TryGetPackage(DefaultPackageName);
-            var handle = assetPackage.LoadAssetAsync<TObject>(assetPath);
-            await handle.Task;
-            if (handle == null || handle.AssetObject == null || handle.Status == EOperationStatus.Failed)
-            {
-                string errorMessage = Utility.Text.Format("Can not load asset '{0}'.", assetPath);
-                throw new GameFrameworkException(errorMessage);
-            }
-
-            var result = handle.AssetObject as TObject;
-            if (result == null)
-            {
-                throw new GameFrameworkException(Utility.Text.Format("TObject '{0}' is invalid.", typeof(TObject).FullName));
-            }
-
-            return result;
-        }*/
-
         #endregion
 
         #region 同步加载资源
