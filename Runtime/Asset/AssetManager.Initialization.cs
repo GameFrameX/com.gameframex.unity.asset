@@ -41,7 +41,7 @@ namespace GameFrameX.Asset.Runtime
                 }
                 default:
                 {
-                    return null;
+                    throw new ArgumentOutOfRangeException(nameof(PlayMode), PlayMode, $"Unsupported play mode: {PlayMode}");
                 }
             }
         }
