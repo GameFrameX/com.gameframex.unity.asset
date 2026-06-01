@@ -771,6 +771,7 @@ namespace GameFrameX.Asset.Runtime
 
         protected override void Shutdown()
         {
+            YooAssets.Destroy();
         }
 
 
