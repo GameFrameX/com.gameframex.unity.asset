@@ -5,33 +5,26 @@ namespace GameFrameX.Asset.Tests
 {
     internal class UnitTests
     {
-        private DateTime dateTime, dateTime1;
-
-        [SetUp]
-        public void Setup()
+        [Test]
+        public void TestIsUnixSameDay_SameDay_ReturnsTrue()
         {
-            dateTime = DateTime.Now;
-            dateTime1 = DateTime.Now.AddHours(1);
+            // April 7, 2021 00:00 UTC and 12:00 UTC should be same day
+            long timestamp1 = 1617753600L;
+            long timestamp2 = 1617796800L;
+            Assert.AreEqual(
+                DateTimeOffset.FromUnixTimeSeconds(timestamp1).Date,
+                DateTimeOffset.FromUnixTimeSeconds(timestamp2).Date);
         }
 
-        // Here is an example of a unit test for the IsUnixSameDay method
         [Test]
-        public void TestIsUnixSameDay()
+        public void TestIsUnixSameDay_DifferentDay_ReturnsFalse()
         {
-            // Arrange
-            // long timestamp1 = 1617842400; // April 7, 2021 12:00:00 AM UTC
-            // long timestamp2 = 1617896400; // April 7, 2021 12:00:00 PM UTC
-
-            // Act
-        }
-
-
-        [Test]
-        public void Test1()
-        {
-            Assert.That(dateTime1.Year, Is.EqualTo(dateTime.Year));
-            Assert.That(dateTime1.Month, Is.EqualTo(dateTime.Month));
-            Assert.That(dateTime1.Day, Is.EqualTo(dateTime.Day));
+            // April 7, 2021 23:00 UTC and April 8, 2021 01:00 UTC
+            long timestamp1 = 1617836400L;
+            long timestamp2 = 1617843600L;
+            Assert.AreNotEqual(
+                DateTimeOffset.FromUnixTimeSeconds(timestamp1).Date,
+                DateTimeOffset.FromUnixTimeSeconds(timestamp2).Date);
         }
     }
 }
