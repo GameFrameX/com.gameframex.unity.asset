@@ -1,3 +1,25 @@
+# [3.0.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.5.2...3.0.0) (2026-06-01)
+
+
+### Bug Fixes
+
+* **asset:** 修复 RemoteServices 并发安全问题 ([8b31fa6](https://github.com/gameframex/com.gameframex.unity.asset/commit/8b31fa6f0b86a873497b72fbfd896ef1b2e4c2d9))
+* **asset:** 修正资源清理方法实现错误 ([de1a597](https://github.com/gameframex/com.gameframex.unity.asset/commit/de1a59714574c3ef3c95b291bad217a0e510f939))
+* **asset:** 实现 Shutdown 资源释放 ([1b33034](https://github.com/gameframex/com.gameframex.unity.asset/commit/1b3303410150cd5788de7423bb2104531363cd52))
+* **asset:** 统一 EventArgs 属性为 private set ([f1f65a6](https://github.com/gameframex/com.gameframex.unity.asset/commit/f1f65a6a0c866bb3e06c7432f86a09cd8d0e1d46))
+* **asset:** 防止 PlayMode 未知时返回 null ([86ae180](https://github.com/gameframex/com.gameframex.unity.asset/commit/86ae180c5decfe7dcabe700b8fb37b23a2692778))
+
+
+### Code Refactoring
+
+* **asset:** 移除未使用的 ReadOnlyPath 和 ReadWritePath ([f74ede5](https://github.com/gameframex/com.gameframex.unity.asset/commit/f74ede5d24c2d783954715c57821f6b0582adc62))
+
+
+### BREAKING CHANGES
+
+* **asset:** IAssetManager 接口移除 ReadOnlyPath、ReadWritePath、
+SetReadOnlyPath、SetReadWritePath 四个成员。
+
 ## [2.5.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/2.5.1...2.5.2) (2026-05-29)
 
 
