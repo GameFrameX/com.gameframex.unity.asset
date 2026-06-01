@@ -489,7 +489,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="path">资源路径 / Asset path</param>
         /// <returns>资源操作句柄 / Asset handle</returns>
         [UnityEngine.Scripting.Preserve]
-        public AssetHandle LoadAssetsSync(string path)
+        public AssetHandle LoadAssetSync(string path)
         {
             return _assetManager.LoadAssetSync(path);
         }
