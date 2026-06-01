@@ -38,12 +38,12 @@ Choose one of the following methods:
 
 1. Add the following to the `dependencies` section in your project's `manifest.json`:
    ```json
-   {"com.gameframex.unity.asset": "https://github.com/AlianBlank/com.gameframex.unity.asset.git"}
+   {"com.gameframex.unity.asset": "https://github.com/GameFrameX/com.gameframex.unity.asset.git"}
    ```
 
 2. Use `Git URL` in Unity's Package Manager:
    ```
-   https://github.com/AlianBlank/com.gameframex.unity.asset.git
+   https://github.com/GameFrameX/com.gameframex.unity.asset.git
    ```
 
 3. Download the repository and place it in your Unity project's `Packages` directory. It will be loaded automatically.

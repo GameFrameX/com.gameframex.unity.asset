@@ -38,12 +38,12 @@ Game Frame X Asset 是一个基于 GameFrameX 框架的 Unity 资源管理功能
 
 1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容：
    ```json
-   {"com.gameframex.unity.asset": "https://github.com/AlianBlank/com.gameframex.unity.asset.git"}
+   {"com.gameframex.unity.asset": "https://github.com/GameFrameX/com.gameframex.unity.asset.git"}
    ```
 
 2. 在 Unity 的 `Packages Manager` 中使用 `Git URL` 的方式添加库，地址为：
    ```
-   https://github.com/AlianBlank/com.gameframex.unity.asset.git
+   https://github.com/GameFrameX/com.gameframex.unity.asset.git
    ```
 
 3. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
