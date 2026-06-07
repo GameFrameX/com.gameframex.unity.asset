@@ -4,21 +4,21 @@
 
 # Game Frame X Asset
 
-[![GitHub release](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.asset?style=flat-square)](https://github.com/GameFrameX/com.gameframex.unity.asset/releases)
-[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.asset?style=flat-square)](https://github.com/GameFrameX/com.gameframex.unity.asset/blob/main/LICENSE.md)
-[![Documentation](https://img.shields.io/badge/Documentation-Online-blue?style=flat-square)](https://gameframex.doc.alianblank.com)
+[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.asset)](https://github.com/GameFrameX/com.gameframex.unity.asset/blob/main/LICENSE.md)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.asset)](https://github.com/GameFrameX/com.gameframex.unity.asset/releases)
+[![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
 
-**インディゲーム開発者向けオールインワンソリューション · インディ開発者の夢を支援**
+インディゲーム開発者向けオールインワンソリューション · インディ開発者の夢を支援
+
+<br />
 
 [ドキュメント](https://gameframex.doc.alianblank.com) · [クイックスタート](#クイックスタート) · [QQグループ](https://qm.qq.com/q/5s5e1e6e6e)
 
-**言語**: [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **日本語** | [한국어](README.ko.md)
+<br />
 
+[English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **日本語** | [한국어](README.ko.md)
 
 </div>
-
----
-
 ## プロジェクト概要
 
 Game Frame X Asset は、GameFrameX フレームワークに基づく Unity リソース管理パッケージで、リソース管理機能をより簡単かつ効率的に使用できるようにします。
