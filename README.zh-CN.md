@@ -68,7 +68,7 @@ var assetComponent = GameEntry.GetComponent<AssetComponent>();
 assetComponent.LoadAsset("AssetPath");
 ```
 
-## 依赖项
+## 依赖
 
 - `com.gameframex.unity`: GameFrameX 核心框架
 
@@ -78,6 +78,14 @@ assetComponent.LoadAsset("AssetPath");
 - 仓库地址: https://github.com/gameframex/com.gameframex.unity.asset
 - 问题反馈: https://github.com/gameframex/com.gameframex.unity.asset/issues
 
+
+## 社区与支持
+
+- QQ群: 467608841 / 233840761
+
+## 更新日志
+
+查看 [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.asset/releases) 了解更新日志。
 ## 开源协议
 
 本项目遵循 MIT 许可证。详细信息请查看 [LICENSE](LICENSE.md) 文件。

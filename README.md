@@ -77,6 +77,14 @@ assetComponent.LoadAsset("AssetPath");
 - Repository: https://github.com/gameframex/com.gameframex.unity.asset
 - Issues: https://github.com/gameframex/com.gameframex.unity.asset/issues
 
+
+## Community & Support
+
+- QQ Group: 467608841 / 233840761
+
+## Changelog
+
+See [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.asset/releases) for changelog.
 ## License
 
 See [LICENSE.md](LICENSE.md) for license information.

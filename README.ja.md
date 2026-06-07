@@ -77,6 +77,14 @@ assetComponent.LoadAsset("AssetPath");
 - リポジトリ: https://github.com/gameframex/com.gameframex.unity.asset
 - イシュー: https://github.com/gameframex/com.gameframex.unity.asset/issues
 
+
+## コミュニティとサポート
+
+- QQグループ: 467608841 / 233840761
+
+## 変更履歴
+
+[Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.asset/releases) で変更履歴を確認してください。
 ## ライセンス
 
 詳しくは [LICENSE.md](LICENSE.md) をご参照ください。
