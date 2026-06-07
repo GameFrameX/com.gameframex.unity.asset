@@ -59,7 +59,6 @@ Then add the package to `dependencies`:
 }
 ```
 
-
 ## 使用例
 
 ```csharp
@@ -80,4 +79,4 @@ assetComponent.LoadAsset("AssetPath");
 
 ## ライセンス
 
-このプロジェクトは MIT ライセンスの下で公開されています。詳細は [LICENSE](LICENSE.md) をご覧ください。
+詳しくは [LICENSE.md](LICENSE.md) をご参照ください。
