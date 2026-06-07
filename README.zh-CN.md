@@ -29,26 +29,36 @@ Game Frame X Asset 是一个基于 GameFrameX 框架的 Unity 资源管理功能
 
 ## 快速开始
 
-### 系统要求
-
-- Unity 2019.4 或更高版本
-- GameFrameX 框架 1.1.1 或更高版本
-
 ### 安装
 
-任选以下方式之一：
+编辑 Unity 项目的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
 
-1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容：
-   ```json
-   {"com.gameframex.unity.asset": "https://github.com/GameFrameX/com.gameframex.unity.asset.git"}
-   ```
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ]
+}
+```
 
-2. 在 Unity 的 `Packages Manager` 中使用 `Git URL` 的方式添加库，地址为：
-   ```
-   https://github.com/GameFrameX/com.gameframex.unity.asset.git
-   ```
+`scopes` 控制哪些包通过此注册表解析。只有以 `com.gameframex` 开头的包才会从这个注册表获取。
 
-3. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
+Then add the package to `dependencies`:
+
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.asset": "3.0.1"
+  }
+}
+```
+
 
 ## 使用示例
 
