@@ -17,6 +17,7 @@ namespace GameFrameX.Asset.Runtime
     [AddComponentMenu("GameFrameX/Asset")]
     [RequireComponent(typeof(GameFrameXAssetCroppingHelper))]
     [UnityEngine.Scripting.Preserve]
+    [GameFrameXAutoComponent(-4000)]
     public sealed class AssetComponent : GameFrameworkComponent
     {
         [Tooltip("当目标平台为Web平台时，将会强制设置为" + nameof(EPlayMode.WebPlayMode))] [SerializeField]
@@ -33,7 +34,14 @@ namespace GameFrameX.Asset.Runtime
         public EPlayMode GamePlayMode
         {
             get { return m_GamePlayMode; }
-            set { m_GamePlayMode = value; }
+            set
+            {
+                m_GamePlayMode = value;
+                if (_assetManager != null)
+                {
+                    _assetManager.SetPlayMode(value);
+                }
+            }
         }
 #if UNITY_EDITOR
         [SerializeField] private List<AssetResourcePackageInfo> m_assetResourcePackages = new List<AssetResourcePackageInfo>();
