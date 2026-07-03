@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.0.2...3.1.0) (2026-07-03)
+
+
+### Features
+
+* **asset:** 同步 GamePlayMode 变更到 AssetManager ([548c0d0](https://github.com/gameframex/com.gameframex.unity.asset/commit/548c0d01e6333d323a8905f14c4f74962f340439))
+
 ## [3.0.2](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.0.1...3.0.2) (2026-06-07)
 
 
