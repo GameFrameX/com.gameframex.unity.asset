@@ -2,6 +2,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using YooAsset;
 
+#if UNITY_6000_0_OR_NEWER
+using PhysicsMaterialAsset = UnityEngine.PhysicsMaterial;
+#else
+using PhysicsMaterialAsset = UnityEngine.PhysicMaterial;
+#endif
+
 namespace GameFrameX.Asset.Runtime
 {
     /// <summary>
@@ -9,6 +15,7 @@ namespace GameFrameX.Asset.Runtime
     /// </summary>
     /// <remarks>
     /// PhysicMaterial asset loading extensions for AssetComponent.
+    /// In Unity 6+, PhysicMaterial was renamed to PhysicsMaterial (error-level obsolete).
     /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class AssetComponentPhysicMaterialExtensions
@@ -25,7 +32,7 @@ namespace GameFrameX.Asset.Runtime
         [UnityEngine.Scripting.Preserve]
         public static Task<AssetHandle> LoadPhysicMaterialAsync(this AssetComponent assetComponent, string path)
         {
-            return assetComponent.LoadAssetAsync<PhysicMaterial>(path);
+            return assetComponent.LoadAssetAsync<PhysicsMaterialAsset>(path);
         }
 
         /// <summary>
@@ -40,7 +47,7 @@ namespace GameFrameX.Asset.Runtime
         [UnityEngine.Scripting.Preserve]
         public static AssetHandle LoadPhysicMaterialSync(this AssetComponent assetComponent, string path)
         {
-            return assetComponent.LoadAssetSync<PhysicMaterial>(path);
+            return assetComponent.LoadAssetSync<PhysicsMaterialAsset>(path);
         }
     }
 }
