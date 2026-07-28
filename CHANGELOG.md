@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.1.0...3.1.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* use PhysicsMaterial type alias for Unity 6 ([#1](https://github.com/gameframex/com.gameframex.unity.asset/issues/1)) ([a6b5f0c](https://github.com/gameframex/com.gameframex.unity.asset/commit/a6b5f0cceb7dd9ce8e7a7531a8c02be43ffefe82))
+
 # [3.1.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.0.2...3.1.0) (2026-07-03)
 
 
