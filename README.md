@@ -46,7 +46,7 @@ Choose one of the following methods:
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.asset": "3.0.1"
+      "com.gameframex.unity.asset": "4.1.0"
      }
    }
    ```
@@ -72,8 +72,15 @@ assetComponent.LoadAsset("AssetPath");
 ## Dependencies
 
 - `com.gameframex.unity`: GameFrameX core framework
+- `com.gameframex.unity.tuyoogame.yooasset` (≥ 3.1.0): YooAsset resource management package
 
-## Documentation & Resources
+## Register-and-Dispatch Mechanism
+
+Since 4.1.0, Web play mode initialization has converged into a single call to `WebPlayModeFileSystemProviderRegistry.CreateFileSystemParameters(hostServerURL, fallbackHostServerURL)`, and all platform-specific conditional branches have been removed. Mini-game platform adapter packages (WeChat, Douyin, etc.) register themselves into the YooAsset main package's registry before scene load (earlier than the first Web initialization), and the registry resolves the provider with the highest priority, so only one platform is selected per initialization. For WebGL projects without any adapter package installed, the fallback to the default WebGL file system keeps behavior unchanged.
+
+## Upgrade Notes
+
+- Starting from 4.1.0, the YooAsset main package `com.gameframex.unity.tuyoogame.yooasset` ≥ 3.1.0 must be installed (previously this worked only because host projects happened to install it directly).
 
 - Documentation: https://gameframex.doc.alianblank.com
 - Repository: https://github.com/gameframex/com.gameframex.unity.asset

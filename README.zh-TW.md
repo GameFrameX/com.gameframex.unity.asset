@@ -46,7 +46,7 @@ Game Frame X Asset 是一個基於 GameFrameX 框架的 Unity 資源管理功能
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.asset": "3.0.1"
+      "com.gameframex.unity.asset": "4.1.0"
      }
    }
    ```
@@ -72,6 +72,15 @@ assetComponent.LoadAsset("AssetPath");
 ## 依賴項
 
 - `com.gameframex.unity`: GameFrameX 核心框架
+- `com.gameframex.unity.tuyoogame.yooasset`（≥ 3.1.0）：YooAsset 資源管理主包
+
+## 註冊即分發機制
+
+自 4.1.0 起，Web 運行模式的初始化收斂為一行 `WebPlayModeFileSystemProviderRegistry.CreateFileSystemParameters(hostServerURL, fallbackHostServerURL)` 呼叫，平台相關的條件分支已全部清零。各小遊戲平台適配套件（微信、抖音等）會在場景載入前（早於首次 Web 初始化）自註冊到 YooAsset 主包的註冊表，註冊表按 Priority 最高者優先互斥解析，每次初始化只會選中一個平台。未安裝任何適配套件的 WebGL 專案回落預設 WebGL 檔案系統，行為保持不變。
+
+## 升級說明
+
+- 自 4.1.0 起，必須安裝 YooAsset 主包 `com.gameframex.unity.tuyoogame.yooasset` ≥ 3.1.0（此前僅靠宿主專案恰好直接安裝了該包才能運作）。
 
 ## 文檔與資源
 
@@ -85,7 +94,7 @@ assetComponent.LoadAsset("AssetPath");
 | 套件 | 說明 |
 |------|------|
 | `com.gameframex.unity` | 1.1.1 |
-| `com.gameframex.unity.event` | 1.1.0 |
+| `com.gameframex.unity.tuyoogame.yooasset` | ≥ 3.1.0 |
 
 ## 社區與支援
 

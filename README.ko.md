@@ -46,7 +46,7 @@ Game Frame X Asset은 GameFrameX 프레임워크 기반의 Unity 리소스 관�
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.asset": "3.0.1"
+      "com.gameframex.unity.asset": "4.1.0"
      }
    }
    ```
@@ -72,6 +72,15 @@ assetComponent.LoadAsset("AssetPath");
 ## 의존성
 
 - `com.gameframex.unity`: GameFrameX 코어 프레임워크
+- `com.gameframex.unity.tuyoogame.yooasset` (≥ 3.1.0): YooAsset 리소스 관리 메인 패키지
+
+## 등록 즉 디스패치 메커니즘
+
+4.1.0부터 Web 플레이 모드 초기화는 `WebPlayModeFileSystemProviderRegistry.CreateFileSystemParameters(hostServerURL, fallbackHostServerURL)` 한 번의 호출로 수렴하며, 플랫폼별 조건 분기는 모두 제거되었습니다. 각 미니게임 플랫폼 어댑터 패키지(위챗, 더우인 등)는 씬 로드 전(첫 Web 초기화보다 이른 시점)에 YooAsset 메인 패키지의 레지스트리에 자동 등록되며, 레지스트리는 Priority가 가장 높은 프로바이더를 상호 배타적으로 해석하므로 초기화마다 하나의 플랫폼만 선택됩니다. 어댑터 패키지를 전혀 설치하지 않은 WebGL 프로젝트는 기본 WebGL 파일 시스템으로 폴백되어 동작이 변하지 않습니다.
+
+## 업그레이드 안내
+
+- 4.1.0부터 YooAsset 메인 패키지 `com.gameframex.unity.tuyoogame.yooasset` ≥ 3.1.0 설치가 필수입니다(이전에는 호스트 프로젝트에 우연히 직접 설치되어 있어야만 동작했습니다).
 
 ## 문서 및 자료
 

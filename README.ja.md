@@ -46,7 +46,7 @@ Game Frame X Asset は、GameFrameX フレームワークに基づく Unity リ�
        }
      ],
      "dependencies": {
-       "com.gameframex.unity.asset": "3.0.1"
+      "com.gameframex.unity.asset": "4.1.0"
      }
    }
    ```
@@ -72,6 +72,15 @@ assetComponent.LoadAsset("AssetPath");
 ## 依存関係
 
 - `com.gameframex.unity`: GameFrameX コアフレームワーク
+- `com.gameframex.unity.tuyoogame.yooasset`（≥ 3.1.0）: YooAsset リソース管理メインパッケージ
+
+## 登録即ディスパッチ機構
+
+4.1.0 以降、Web プレイモードの初期化は `WebPlayModeFileSystemProviderRegistry.CreateFileSystemParameters(hostServerURL, fallbackHostServerURL)` の 1 回の呼び出しに収束し、プラットフォーム固有の条件分岐はすべて削除されました。各ミニゲームプラットフォーム適応パッケージ（WeChat、Douyin など）はシーン読み込み前（初回の Web 初期化より早い段階）に YooAsset メインパッケージのレジストリへ自己登録し、レジストリは Priority が最も高いプロバイダーを排他的に解決するため、初期化ごとに選択されるプラットフォームは 1 つだけです。適応パッケージを一切インストールしていない WebGL プロジェクトはデフォルトの WebGL ファイルシステムへフォールバックし、挙動は変わりません。
+
+## アップグレードガイド
+
+- 4.1.0 以降、YooAsset メインパッケージ `com.gameframex.unity.tuyoogame.yooasset` ≥ 3.1.0 のインストールが必須です（以前はホストプロジェクトが偶然直接インストールしていた場合にのみ動作していました）。
 
 ## ドキュメントとリソース
 

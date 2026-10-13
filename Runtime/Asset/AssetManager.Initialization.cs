@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
@@ -85,27 +84,7 @@ namespace GameFrameX.Asset.Runtime
         private InitializationOperation InitializeYooAssetWebPlayMode(ResourcePackage resourcePackage, string hostServerURL, string fallbackHostServerURL)
         {
             var initParameters = new WebPlayModeParameters();
-            var provider = WebPlayModeFileSystemProviderRegistry.Resolve();
-            FileSystemParameters webFileSystem = null;
-            if (provider != null)
-            {
-                // 渠道适配包注册的提供者生效（抖音/微信/快手/B站/支付宝/TapTap等小游戏）
-                Log.Info($"Web运行模式文件系统提供者：{provider.ChannelName}");
-                var context = new WebPlayModeProviderContext
-                {
-                    HostServerURL = hostServerURL,
-                    FallbackHostServerURL = fallbackHostServerURL,
-                };
-                webFileSystem = provider.CreateFileSystemParameters(context);
-            }
-
-            if (webFileSystem == null)
-            {
-                // 未注册渠道提供者或提供者返回空时，创建默认WebGL文件系统
-                webFileSystem = FileSystemParameters.CreateDefaultWebFileSystemParameters();
-            }
-
-            initParameters.WebFileSystemParameters = webFileSystem;
+            initParameters.WebFileSystemParameters = WebPlayModeFileSystemProviderRegistry.CreateFileSystemParameters(hostServerURL, fallbackHostServerURL);
             return resourcePackage.InitializeAsync(initParameters);
         }
 
