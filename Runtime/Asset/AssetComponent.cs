@@ -20,8 +20,7 @@ namespace GameFrameX.Asset.Runtime
     [GameFrameXAutoComponent(-4000)]
     public sealed class AssetComponent : GameFrameworkComponent
     {
-        [Tooltip("当目标平台为Web平台时，将会强制设置为" + nameof(EPlayMode.WebPlayMode))] [SerializeField]
-        private EPlayMode m_GamePlayMode;
+        private EPlayMode m_GamePlayMode = EPlayMode.EditorSimulateMode;
 
         /// <summary>
         /// 获取或设置资源的运行模式。
@@ -43,9 +42,11 @@ namespace GameFrameX.Asset.Runtime
                 }
             }
         }
+
 #if UNITY_EDITOR
-        [SerializeField] private List<AssetResourcePackageInfo> m_assetResourcePackages = new List<AssetResourcePackageInfo>();
+        private List<AssetResourcePackageInfo> m_assetResourcePackages = new List<AssetResourcePackageInfo>();
 #endif
+
 
         /// <summary>
         /// 内置资源包的默认名称。
@@ -62,6 +63,13 @@ namespace GameFrameX.Asset.Runtime
         [UnityEngine.Scripting.Preserve]
         protected override void Awake()
         {
+            if (GameFrameXOptions.TryGet<AssetOptions>(out var assetOptions))
+            {
+                m_GamePlayMode = assetOptions.GamePlayMode;
+#if UNITY_EDITOR
+                m_assetResourcePackages = assetOptions.AssetResourcePackages;
+#endif
+            }
 #if !UNITY_EDITOR
             if (GamePlayMode == EPlayMode.EditorSimulateMode)
             {

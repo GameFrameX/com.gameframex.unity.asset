@@ -29,52 +29,30 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using GameFrameX.Editor;
 using GameFrameX.Asset.Runtime;
+using GameFrameX.Editor;
 using UnityEditor;
-using UnityEngine;
 
 namespace GameFrameX.Asset.Editor
 {
     [CustomEditor(typeof(AssetComponent))]
     internal sealed class AssetComponentInspector : ComponentTypeComponentInspector
     {
-        private SerializedProperty m_GamePlayMode;
-
-        private GUIContent m_GamePlayModeGUIContent = new GUIContent("资源运行模式");
-        private GUIContent m_AssetResourcePackagesGUIContent = new GUIContent("包列表");
-        private SerializedProperty m_AssetResourcePackages;
-
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            serializedObject.Update();
-
-            EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
-            {
-                EditorGUILayout.PropertyField(m_GamePlayMode, m_GamePlayModeGUIContent);
-                GUI.enabled = false;
-                EditorGUILayout.PropertyField(m_AssetResourcePackages, m_AssetResourcePackagesGUIContent);
-                GUI.enabled = true;
-            }
-            EditorGUI.EndDisabledGroup();
-
-            serializedObject.ApplyModifiedProperties();
-
-            Repaint();
-        }
-
-        protected override void RefreshTypeNames()
-        {
-            RefreshComponentTypeNames(typeof(IAssetManager));
+            // C9 活视图：编辑态提示 AssetOptions 入口；Play 态只读显示 GamePlayMode（启动期型，经 AssetComponent.GamePlayMode 属性读取）。
+            GameFrameXOptionsLiveViewUtility.DrawLiveView((AssetComponent)target, typeof(AssetOptions));
         }
 
         protected override void Enable()
         {
-            m_GamePlayMode = serializedObject.FindProperty("m_GamePlayMode");
-            m_AssetResourcePackages = serializedObject.FindProperty("m_assetResourcePackages");
-            // m_fallbackHostServer = serializedObject.FindProperty("m_fallbackHostServer");
+        }
+
+        protected override void RefreshTypeNames()
+        {
+            // 启动配置已收敛到 AssetOptions（C9），组件不再持有类型名序列化字段，无类型列表可刷新。
         }
     }
 }
