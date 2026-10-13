@@ -10,7 +10,7 @@ namespace GameFrameX.Asset.Runtime
     /// 资源组件。
     /// </summary>
     [UnityEngine.Scripting.Preserve]
-    public partial class AssetManager : GameFrameworkModule, IAssetManager
+    public partial class AssetManager : IGameFrameworkModule, IAssetManager
     {
         /// <summary>
         /// 默认包名称
@@ -52,7 +52,6 @@ namespace GameFrameX.Asset.Runtime
 
             Log.Info("Asset Init Over");
         }
-
 
         /// <summary>
         /// 初始化操作。
@@ -122,7 +121,6 @@ namespace GameFrameX.Asset.Runtime
             var package = YooAssets.GetPackage(packageName);
             package.TryUnloadUnusedAsset(assetPath);
         }
-
 
         /// <summary>
         /// 强制回收所有资源
@@ -200,7 +198,6 @@ namespace GameFrameX.Asset.Runtime
                 package.ClearUnusedBundleFilesAsync();
             }
         }
-
 
         #region 异步加载子资源对象
 
@@ -345,7 +342,6 @@ namespace GameFrameX.Asset.Runtime
 
         #endregion
 
-
         #region 异步加载资源
 
         /// <summary>
@@ -441,7 +437,6 @@ namespace GameFrameX.Asset.Runtime
         {
             return YooAssets.LoadSubAssetsAsync(path);
         }
-
 
         /// <summary>
         /// 异步加载资源
@@ -740,15 +735,6 @@ namespace GameFrameX.Asset.Runtime
         public void SetDefaultAssetsPackage(ResourcePackage resourcePackage)
         {
             YooAssets.SetDefaultPackage(resourcePackage);
-        }
-
-
-        protected override void Update(float elapseSeconds, float realElapseSeconds)
-        {
-        }
-
-        protected override void Shutdown()
-        {
         }
 
         /// <summary>
