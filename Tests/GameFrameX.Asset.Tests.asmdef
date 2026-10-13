@@ -1,0 +1,21 @@
+{
+    "name": "GameFrameX.Asset.Tests",
+    "rootNamespace": "GameFrameX.Asset.Tests",
+    "references": [
+        "GameFrameX.Asset.Runtime",
+        "GameFrameX.Runtime",
+        "YooAsset.Runtime",
+        "YooAsset"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
