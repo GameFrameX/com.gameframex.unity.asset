@@ -1,3 +1,24 @@
+# [4.0.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.2.0...4.0.0) (2026-10-15)
+
+
+* feat(asset)!: 资源模块薄入口化并新增 AssetOptions ([708130e](https://github.com/gameframex/com.gameframex.unity.asset/commit/708130ee98d1d5a8bfc2d4e9fc1a46e9fecf0208))
+
+
+### Features
+
+* **asset:** Web 初始化改走 YooAsset 注册表单行分发 ([654ed03](https://github.com/gameframex/com.gameframex.unity.asset/commit/654ed0342d8760634118709e08aadbaf88ff5ac8)), closes [if/#elif](https://github.com/gameframex/com.gameframex.unity.asset/issues/elif)
+* **asset:** 引入 AssetOptions 启动配置 ([8f2cf1b](https://github.com/gameframex/com.gameframex.unity.asset/commit/8f2cf1b77d743bd68444247671a73c9524156d3f))
+* **asset:** 迁移 AssetManager 至 IGameFrameworkModule ([447a2d4](https://github.com/gameframex/com.gameframex.unity.asset/commit/447a2d4dd39a15ec9624e040116b566f23fe5206))
+
+
+### BREAKING CHANGES
+
+* AssetComponent 序列化字段移除，编辑期配置入口收敛到代码 AssetOptions。
+* **asset:** AssetComponent 移除序列化字段，启动配置须在首场景加载前经 GameFrameXOptions.Configure 注入；
+字段默认值同源，保证无注入时行为一致。
+* **asset:** AssetManager 声明改为 IGameFrameworkModule 标记接口；
+未实现 IUpdatableModule / IShutdownableModule 的模块不再被 GameFrameworkEntry 轮询与关闭。
+
 ## [Unreleased]
 
 ### ⚠ BREAKING CHANGES
