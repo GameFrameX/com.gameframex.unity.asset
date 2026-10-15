@@ -1,3 +1,14 @@
+# [5.0.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/4.0.0...5.0.0) (2026-10-15)
+
+
+* feat(asset)!: Web提供者注册表迁移至YooAsset适配包 ([f83c273](https://github.com/gameframex/com.gameframex.unity.asset/commit/f83c273ef1a5bd4246c9a9947df4f3778ef6f02e))
+
+
+### BREAKING CHANGES
+
+* GameFrameX.Asset.Runtime 命名空间移除上述三个类型，
+渠道适配包须改引 YooAsset 命名空间（com.gameframex.unity.tuyoogame.yooasset 包）下的新类型。
+
 # [4.0.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/3.2.0...4.0.0) (2026-10-15)
 
 

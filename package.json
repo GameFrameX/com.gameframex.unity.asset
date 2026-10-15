@@ -3,7 +3,7 @@
   "displayName": "Game Frame X Asset",
   "category": "GameFrameX",
   "description": "GameFrameX Asset — Unity resource management package built on YooAsset. Initializes named asset packages with remote and fallback host URLs across play modes, loads single, all and sub assets plus raw files synchronously or asynchronously (16 typed load extensions such as LoadPrefabAsync / LoadTexture2DAsync), unloads assets and clears unused bundle files, and drives a patch state machine emitting update, progress and failure events. Startup moves to code-level AssetOptions (GameFrameXOptions.Configure: play mode, editor package list). Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX Asset — 基于 YooAsset 的 Unity 资源管理功能包。按命名资源包与远端/回退主机地址初始化，覆盖多种播放模式；支持单个、全部与子资源及原始文件的同步/异步加载（LoadPrefabAsync、LoadTexture2DAsync 等 16 类类型化扩展）、资源卸载与未使用 Bundle 清理，并驱动补丁更新状态机发布更新/进度/失败事件。启动配置收敛为代码级 AssetOptions（GameFrameXOptions.Configure：播放模式、编辑器包列表）。文档：https://gameframex.doc.alianblank.com",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "unity": "2019.4",
   "keywords": [
     "GameFrameX",
