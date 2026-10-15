@@ -48,6 +48,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="fileName">文件名</param>
         /// <param name="error">错误信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static AssetWebFileDownloadFailedEventArgs Create(string packageName, string fileName, string error)
         {
             var assetWebFileDownloadFailed = ReferencePool.Acquire<AssetWebFileDownloadFailedEventArgs>();

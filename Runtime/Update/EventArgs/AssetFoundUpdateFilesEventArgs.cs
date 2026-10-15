@@ -48,6 +48,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="totalCount">总数量</param>
         /// <param name="totalSizeBytes">总大小</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static AssetFoundUpdateFilesEventArgs Create(string packageName, int totalCount, long totalSizeBytes)
         {
             var foundUpdateFiles = ReferencePool.Acquire<AssetFoundUpdateFilesEventArgs>();

@@ -63,6 +63,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="totalDownloadSizeBytes">总下载大小</param>
         /// <param name="currentDownloadSizeBytes">当前下载大小</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static AssetDownloadProgressUpdateEventArgs Create(string packageName, int totalDownloadCount, int currentDownloadCount, long totalDownloadSizeBytes, long currentDownloadSizeBytes)
         {
             var assetDownloadProgressUpdate = ReferencePool.Acquire<AssetDownloadProgressUpdateEventArgs>();

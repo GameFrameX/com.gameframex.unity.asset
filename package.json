@@ -20,7 +20,7 @@
     "url": "https://gameframex.doc.alianblank.com"
   },
   "dependencies": {
-    "com.gameframex.unity": "2.5.4",
+    "com.gameframex.unity": "3.0.0",
     "com.gameframex.unity.event": "2.0.0",
     "com.gameframex.unity.tuyoogame.yooasset": "3.1.0"
   },

@@ -38,6 +38,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="packageName">包名称</param>
         /// <param name="currentStates">当前步骤</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static AssetPatchStatesChangeEventArgs Create(string packageName, EPatchStates currentStates)
         {
             var assetPatchStatesChange = ReferencePool.Acquire<AssetPatchStatesChangeEventArgs>();

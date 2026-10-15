@@ -35,8 +35,7 @@ namespace GameFrameX.Asset.Runtime
     /// 资源模块启动配置（模块级 Options）。
     /// </summary>
     /// <remarks>
-    /// 默认值即开箱值（与原 AssetComponent 序列化字段默认值同源）；游戏在首场景加载前（BeforeSceneLoad）或
-    /// <c>GameFrameworkStartup.Headless()</c> 调用前经 <c>GameFrameXOptions.Configure(new AssetOptions{...})</c> 注入差异值，
+    /// 默认值即开箱值（与原 AssetComponent 序列化字段默认值同源）；游戏在首场景加载前（BeforeSceneLoad）经 <c>GameFrameXOptions.Configure(new AssetOptions{...})</c> 注入差异值，
     /// 由 <see cref="AssetComponent"/> 在 Awake 中一次性消费。
     /// </remarks>
     public sealed class AssetOptions

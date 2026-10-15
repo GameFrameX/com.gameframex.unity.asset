@@ -41,6 +41,7 @@ namespace GameFrameX.Asset.Runtime
         /// <param name="packageName">包名称</param>
         /// <param name="error">错误信息</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static AssetPatchManifestUpdateFailedEventArgs Create(string packageName, string error)
         {
             var assetPatchManifestUpdateFailed = ReferencePool.Acquire<AssetPatchManifestUpdateFailedEventArgs>();
