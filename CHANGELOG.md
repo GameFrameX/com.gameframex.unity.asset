@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/gameframex/com.gameframex.unity.asset/compare/5.0.0...5.0.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **asset:** 添加完整 link.xml 防代码裁剪保护 ([6ecdb94](https://github.com/gameframex/com.gameframex.unity.asset/commit/6ecdb9498543fcf1349540b6eeb1244dabcf3762))
+
 # [5.0.0](https://github.com/gameframex/com.gameframex.unity.asset/compare/4.0.0...5.0.0) (2026-10-15)
 
 
